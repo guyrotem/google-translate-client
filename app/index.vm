@@ -1,0 +1,80 @@
+<!doctype html>
+<!-- #if( false )
+  Prerequisites from server model:
+  --------------------------------
+  ${locale}, ${debug}, ${experiments},
+  ${newRelicEndUserHeader}, ${newRelicEndUserFooter}
+  ${clientTopology.googleTranslate1xStaticsUrl},
+  ${clientTopology.staticBaseUrl},
+
+  More details at: http://kb.wixpress.com/display/dashboard/How+to+integrate+server+with+index.vm
+#end -->
+<!--
+  #set( $staticsUrl = $clientTopology.googleTranslate1xStaticsUrl )
+  #set( $staticBaseUrl = $clientTopology.staticBaseUrl )
+-->
+<html ng-app="googleTranslate1xApp">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>googleTranslate1x</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width">
+    <meta name="robots" content="noindex, nofollow">
+    <meta name="referrer" content="origin">
+    <link type="image/png" href="//www.wix.com/favicon.ico" rel="shortcut icon">
+    <link rel="stylesheet" href="${staticBaseUrl}services/third-party/fonts/Helvetica/fontFace.css">
+    <!-- process-tags prefix('${staticsUrl}') -->
+    <!-- build:css({.tmp,app}) styles/main.css -->
+    <link rel="stylesheet" href="styles/main.css">
+    <!-- endbuild -->
+    <!-- end-process-tags -->
+    ${newRelicEndUserHeader}
+  </head>
+  <body>
+    
+    <!-- Add your site or application content here -->
+    <google-translate1x-app name="'googleTranslate1xApp'"></google-translate1x-app>
+    
+
+    <!-- process-tags prefix('${staticsUrl}') -->
+    <script src="bower_components/jquery/jquery.js"></script>
+    <script src="bower_components/angular/angular.js"></script>
+    <script src="bower_components/angular-translate/angular-translate.js"></script>
+    <script src="bower_components/angular-i18n/angular-locale_${locale}.js"></script>
+    <!-- build:js scripts/modules.js -->
+    <script src="bower_components/es6-shim/es6-shim.js"></script>
+    <script src="bower_components/uri.js/src/URI.js"></script>
+    <script src="bower_components/lodash/lodash.js"></script>
+    <!-- endbuild -->
+    <!-- build:js({.tmp,app}) scripts/scripts.js -->
+    <script src="scripts/app.js"></script>
+    <script src="views/google-translate1x-app.html.js"></script>
+    <script src="scripts/locale/messages_en.js"></script>
+    <script src="scripts/components/google-translate1x-app.js"></script>
+    <script src="scripts/services/google-translate-api.js"></script>
+    <!-- endbuild --><!-- scripts -->
+    <!-- build:locale({.tmp,app}) scripts/locale/messages_${locale}.js -->
+    <script src="scripts/locale/messages_${locale}.js"></script>
+    <!-- endbuild -->
+    <!-- end-process-tags -->
+
+    <!-- #if( ${enableMocks} ) -->
+    <script src="bower_components/angular-mocks/angular-mocks.js"></script>
+    
+    <!-- build:js(.tmp) scripts/mocks.js -->
+    <script src="test/mock/server-api.js"></script>
+    <!-- endbuild -->
+    
+    <script>
+      /* jshint ignore:start */
+      if ('${enableMocks}' === 'true') {
+        angular.module('googleTranslate1xApp').requires.push('googleTranslate1xAppMocks');
+      }
+    </script>
+    <!-- #end -->
+    
+    ${newRelicEndUserFooter}
+    
+  </body>
+</html>

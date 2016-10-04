@@ -1,0 +1,42 @@
+$bg-color: #cecece;
+
+$wix-helvetica-55: Arial;
+$wix-helvetica-75: Arial;
+
+.container {
+  margin: auto;
+  width: 300px;
+}
+
+.hero-unit {
+  position: absolute;
+  width: 360px;
+  font-family: $wix-helvetica-55;
+  font-size: 18px;
+  font-weight: 200;
+  line-height: 30px;
+  background-color: $bg-color;
+  border-radius: 6px;
+  padding: 60px;
+
+  h1 {
+    font-family: $wix-helvetica-75;
+    font-size: 60px;
+    line-height: 1;
+    letter-spacing: -1px;
+  }
+
+  .logo-on-header {
+    font-size: 49px;
+    position: relative;
+    top: -8px;
+  }
+
+  .wix-style-link {
+    &:before {
+      position: relative;
+      left: -8px;
+    }
+  }
+}
+

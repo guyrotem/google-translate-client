@@ -1,0 +1,41 @@
+{
+  "name": "google-translate1x",
+  "version": "1.0.0",
+  "main": "dist/scripts/google-translate1x.js",
+  "ignore": [
+    ".*",
+    "Gemfile*",
+    "Gruntfile.js",
+    "pom.xml",
+    "/*.json",
+    "*.conf.js",
+    "*-conf.js",
+    "app/*",
+    "!app/styles",
+    "test/*",
+    "!test/lib",
+    "dist/bower_components",
+    "dist/concat",
+    "dist/_debug*",
+    "maven",
+    "*.sublime*"
+  ],
+  "dependencies": {
+    "jquery": "~2.0.3",
+    "angular": "~1.5.0",
+    "angular-translate": "~1.1.0",
+    "angular-i18n": "~1.5.0",
+    "es6-shim": null,
+    "uri.js": "~1.13.1",
+    "lodash": "^4.16.3"
+  },
+  "devDependencies": {
+    "angular-mocks": "~1.5.0",
+    "es5-shim": null
+  },
+  "resolutions": {
+    "angular": "~1.5.0",
+    "angular-i18n": "~1.5.0",
+    "angular-bootstrap": "~0.11.0"
+  }
+}
