@@ -4,15 +4,26 @@
       %div
         %span Target Languages:
         %ui-select(ng-model="$ctrl.targetLanguages" theme="bootstrap" multiple)
-          %ui-select-match
-            {{$item.name}}
+          %ui-select-match(placeholder="Spanish, French, Bengali, ...")
+            {{ $item.name }}
           %ui-select-choices(repeat="targetLanguage.code as targetLanguage in $ctrl.getTargetLanguageOptions() | filter:$select.search")
             {{ targetLanguage.name }}
-      %div Text
-      %input(name='input' ng-model='$ctrl.input')
-      -#%input(type='submit' ng-disabled='$ctrl.isLockSearch()' value='Translate!')
-      %button(type='submit' ng-disabled='$ctrl.isLockSearch()' value='Translate!' ng-click='$ctrl.submit()') GO!
+      .translation-input
+        %div Text
+        %input(name='input' ng-model='$ctrl.input' autocomplete="off" placeholder="where is the bus stop?" )
+        %span
+          %button(type='submit' ng-disabled='$ctrl.isLockSearch()' value='Translate!')
+            GO!
+        %span(ng-if='$ctrl.isInProgress()')
+          {{$ctrl.translationsDoneCounter()}} / {{$ctrl.targetLanguages.length}}
+
+
+      %div.did-you-mean(ng-if='$ctrl.showDidYouMean()')
+        %span Did you mean...
+        %span {{ $ctrl.didYouMean() }}
+
     .output-languages
-      %div(ng-repeat='translationItem in $ctrl.getTranslations()')
-        %span {{translationItem.language}}
-        %span {{translationItem.translation}}
+      .translation-results(ng-repeat='translationItem in $ctrl.getTranslations()')
+        .result-language {{translationItem.language}}
+        .result-value {{translationItem.translation}}
+        .result-transliteration {{translationItem.transliteration}}

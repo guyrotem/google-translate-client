@@ -2,9 +2,14 @@
 'use strict';
 
 class GoogleTranslate1xApp {
+  private stubValue: boolean;
   /* @ngInject */
   constructor() {
+    this.stubValue = false;
+  }
 
+  getStub(): boolean {
+    return this.stubValue;
   }
 }
 

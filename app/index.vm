@@ -15,7 +15,7 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Multi-lingual translation</title>
+    <title>Google Translate Client</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width">
     <meta name="robots" content="noindex, nofollow">
@@ -39,8 +39,6 @@
     <!-- process-tags prefix('${staticsUrl}') -->
     <script src="bower_components/jquery/jquery.js"></script>
     <script src="bower_components/angular/angular.js"></script>
-    <script src="bower_components/angular-translate/angular-translate.js"></script>
-    <script src="bower_components/angular-i18n/angular-locale_${locale}.js"></script>
     <!-- build:js scripts/modules.js -->
     <script src="bower_components/es6-shim/es6-shim.js"></script>
     <script src="bower_components/uri.js/src/URI.js"></script>
@@ -51,6 +49,7 @@
     <!-- build:js({.tmp,app}) scripts/scripts.js -->
     <script src="scripts/app.js"></script>
     <script src="views/google-translate1x-app.html.js"></script>
+    <script src="views/translation-box.html.js"></script>
     <script src="scripts/locale/messages_en.js"></script>
     <script src="scripts/components/google-translate1x-app.js"></script>
     <script src="scripts/services/google-translate-api.js"></script>

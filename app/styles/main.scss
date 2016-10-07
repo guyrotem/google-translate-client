@@ -1,37 +1,84 @@
-$bg-color: #cecece;
+$bg-color: #40d0b0;
 
 $wix-helvetica-55: Arial;
 $wix-helvetica-75: Arial;
+
+$button-active: #3388ff;
+$button-disabled: #999999;
+$color-warning: #ee9988;
+$color-gray-dark: #6f6f6f;
+$color-white: #ffffff;
 
 .container {
   margin: auto;
   width: 1020px;
 }
 
+.powered-by-google {
+  margin-left: 10px;
+}
+
 button {
-  background-color: #3388ff;
+  background-color: $button-active;
   border-radius: 5px;
+  outline: none;
+  border: 0;
+  box-shadow: 2px 2px 7px 0 $color-gray-dark;
 
   &:disabled {
-    background-color: #999999;
+    background-color: $button-disabled;
   }
 }
 
+input {
+  outline: none;
+  border-width: 0;
+  padding: 0 6px;
+}
+
+$gradient-green1: #64e384;
+$gradient-green11: rgba(80, 227, 138, .7);
+$gradient-green2: #40d0b0;
+$gradient-green22: rgba(64, 208, 172, .5);
+$color-light-gray: #dfdfdf;
+
 .translate-box {
-  width: 900px;
   font-family: $wix-helvetica-55;
   font-size: 18px;
-  font-weight: 200;
   line-height: 30px;
-  background-color: $bg-color;
+  box-shadow: 4px 4px 7px 2px $color-light-gray;
+  background: linear-gradient(to bottom, $gradient-green11 0, $gradient-green22 50%, $gradient-green11 100%);
   border-radius: 6px;
   padding: 60px;
+  margin: 30px;
+
+  .did-you-mean {
+    font-style: italic;
+    color: $color-warning;
+  }
 
   h1 {
     font-family: $wix-helvetica-75;
     font-size: 60px;
     line-height: 1;
     letter-spacing: -1px;
+  }
+}
+
+.output-languages {
+  margin-top: 15px;
+}
+
+.translation-results {
+  display: table-row;
+
+  * {
+    display: table-cell;
+    padding: 0 10px;
+  }
+
+  .result-language {
+    color: $color-white;
   }
 }
 

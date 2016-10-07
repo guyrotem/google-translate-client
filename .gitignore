@@ -6,6 +6,7 @@ app/bower_components
 *.iml
 *.sublime-workspace
 npm-debug.log
+npm-debug.log.*
 sauce_connect.log*
 .DS_Store
 .bundle

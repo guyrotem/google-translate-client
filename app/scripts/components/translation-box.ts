@@ -24,17 +24,33 @@ class TranslationBox {
   }
 
   isLockSearch(): boolean {
-    return !this.input || this.targetLanguages.length == 0
+    return !this.input || this.targetLanguages.length === 0 || this.isInProgress();
+  }
+
+  showDidYouMean(): boolean {
+    return this.translateManager.getDidYouMeanFix() !== null;
+  }
+
+  didYouMean(): string {
+    return this.translateManager.getDidYouMeanFix();
+  }
+
+  isInProgress(): boolean {
+    return this.translateManager.isTranslationInProgress();
+  }
+
+  translationsDoneCounter(): number {
+    return this.translateManager.translationsDoneCounter();
   }
 
   submit() {
     this.lastResult = [];
-    let sourceLanguage = 'en';
+    let sourceLanguage = 'auto';
 
     this.translateManager.translate(
       this.input,
       sourceLanguage,
-      this.targetLanguages.filter(x => {return x !== sourceLanguage;})
+      this.targetLanguages.filter(x => { return x !== sourceLanguage; })
     )
       .then(result => {
         this.lastResult = result;

@@ -3,8 +3,12 @@
 
 class GoogleTranslateApi {
 
+  public resolvedCounter: number;
+
   /* @ngInject */
-  constructor(private $http: ng.IHttpService) { }
+  constructor(private $http: ng.IHttpService) {
+    this.resolvedCounter = 0;
+  }
 
   translate(originalText: string, sourceLanguage: string, targetLanguage: string): ng.IPromise<TranslationResultServerExtract> {
     let data: TranslationSubmitServer = {
@@ -13,25 +17,19 @@ class GoogleTranslateApi {
       targetLang: targetLanguage
     };
 
-    return this.$http.post('/_api/translate', data)
+    return this.$http.post('/api/translate', data)
       .then(response => <TranslationResultServer>response.data)
       .then(data => {
+        this.resolvedCounter++;
         console.log(data.extract);
         return data.extract;
       });
   }
 
   getLanguages(): ng.IPromise<TargetLanguageView[]> {
-    return this.$http.get('/_api/languages')
+    return this.$http.get('/api/languages')
       .then(resposne => resposne.data);
   }
-
-  // private googleArrayToJson(googleArray: string) {
-  //   let a = googleArray
-  //     .replace(/,+/g, ',')
-  //     .replace(/\[,/, '[').replace(/,\]/, ']');
-  //   return JSON.parse(a);
-  // }
 }
 
 angular

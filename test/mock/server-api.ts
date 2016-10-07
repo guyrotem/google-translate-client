@@ -4,8 +4,8 @@
 angular.module('googleTranslate1xAppMocks', ['ngMockE2E'])
   .run(($httpBackend: ng.IHttpBackendService, languages2) => {
 
-    let translateApiUrl = '/_api/translate';
-    let languagesApiUrl = '/_api/languages';
+    let translateApiUrl = '/api/translate';
+    let languagesApiUrl = '/api/languages';
 
     let translateResponse = {
       extract: {
