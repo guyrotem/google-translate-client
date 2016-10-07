@@ -2,9 +2,49 @@
 'use strict';
 
 angular.module('googleTranslate1xAppMocks', ['ngMockE2E'])
-  .run(($httpBackend: ng.IHttpBackendService) => {
+  .run(($httpBackend: ng.IHttpBackendService, languages2) => {
+
+    let translateApiUrl = '/_api/translate';
+    let languagesApiUrl = '/_api/languages';
+
+    let translateResponse = {
+      extract: {
+        translation: 'одежьда'
+      },
+      originalResponse: JSON.stringify([[['одежьда']]])
+    };
+
+    $httpBackend.whenPOST(translateApiUrl).respond(200, translateResponse);
+    $httpBackend.whenGET(languagesApiUrl).respond(200, languages2);
+
     $httpBackend.whenGET(/.*/).passThrough();
     $httpBackend.whenPOST(/.*/).passThrough();
     $httpBackend.whenPUT(/.*/).passThrough();
     $httpBackend.whenDELETE(/.*/).passThrough();
-  });
+  })
+  .constant('languages2', [
+    {
+      name: 'English',
+      code: 'en'
+    },
+    {
+      name: 'Portuguese',
+      code: 'pt'
+    },
+    {
+      name: 'Spanish',
+      code: 'es'
+    },
+    {
+      name: 'French',
+      code: 'fr'
+    },
+    {
+      name: 'Russian',
+      code: 'ru'
+    },
+    {
+      name: 'Chinese',
+      code: 'zh'
+    }
+  ]);

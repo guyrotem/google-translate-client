@@ -2,17 +2,9 @@
 'use strict';
 
 class GoogleTranslate1xApp {
-  clicks: number;
-  name: string;
-
   /* @ngInject */
-  constructor(private googleTranslateApi: GoogleTranslateApi) {
-    this.clicks = 0;
-  }
+  constructor() {
 
-  onClick() {
-    this.clicks++;
-    return this.googleTranslateApi.someMethod()
   }
 }
 

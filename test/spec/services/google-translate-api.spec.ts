@@ -13,7 +13,7 @@ describe('Service: googleTranslateApi', () => {
   }));
 
   it('should do something', () => {
-    expect(googleTranslateApi.someMethod()).toBe(42);
+    // expect(googleTranslateApi.someMethod()).toBe(42);
   });
 
 });

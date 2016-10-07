@@ -5,12 +5,20 @@ $wix-helvetica-75: Arial;
 
 .container {
   margin: auto;
-  width: 300px;
+  width: 1020px;
 }
 
-.hero-unit {
-  position: absolute;
-  width: 360px;
+button {
+  background-color: #3388ff;
+  border-radius: 5px;
+
+  &:disabled {
+    background-color: #999999;
+  }
+}
+
+.translate-box {
+  width: 900px;
   font-family: $wix-helvetica-55;
   font-size: 18px;
   font-weight: 200;
@@ -24,19 +32,6 @@ $wix-helvetica-75: Arial;
     font-size: 60px;
     line-height: 1;
     letter-spacing: -1px;
-  }
-
-  .logo-on-header {
-    font-size: 49px;
-    position: relative;
-    top: -8px;
-  }
-
-  .wix-style-link {
-    &:before {
-      position: relative;
-      left: -8px;
-    }
   }
 }
 

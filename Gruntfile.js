@@ -14,8 +14,8 @@ module.exports = function (grunt) {
   });
 
   grunt.modifyTask('yeoman', {
-    //the address to which your local /_api is proxied to (to workaround CORS issues)
-    api: 'http://www.pizza.wixpress.com/_api/',
+    //server URL
+    api: 'http://localhost:8080/',
     //api: 'http://localhost:3000',
 
     //this is the node.js fake server that e2e tests will use
@@ -23,7 +23,7 @@ module.exports = function (grunt) {
 
     //the address that opens in your browser in grunt serve
     //(domain should be the same as staging so cookies will be sent in api requests)
-    local: 'http://local.pizza.wixpress.com:<%= connect.options.port %>/'
+    local: 'http://localhost:<%= connect.options.port %>/'
   });
 
   //override sauce labs browser list

@@ -27,15 +27,17 @@
     "angular-i18n": "~1.5.0",
     "es6-shim": null,
     "uri.js": "~1.13.1",
-    "lodash": "^4.16.3"
+    "lodash": "^4.16.3",
+    "angular-ui-select": "^0.19.4",
+    "angular-sanitize": "^1.5.8",
+    "selectize": "^0.12.3",
+    "bootstrap": "^3.3.7"
   },
   "devDependencies": {
     "angular-mocks": "~1.5.0",
     "es5-shim": null
   },
   "resolutions": {
-    "angular": "~1.5.0",
-    "angular-i18n": "~1.5.0",
-    "angular-bootstrap": "~0.11.0"
+    "angular": "~1.5.0"
   }
 }
