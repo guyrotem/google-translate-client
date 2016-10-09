@@ -6,6 +6,7 @@ $wix-helvetica-75: Arial;
 $button-active: #3388ff;
 $button-disabled: #999999;
 $color-warning: #ee9988;
+$color-error: #df2020;
 $color-gray-dark: #6f6f6f;
 $color-white: #ffffff;
 
@@ -63,6 +64,15 @@ $color-light-gray: #dfdfdf;
     line-height: 1;
     letter-spacing: -1px;
   }
+}
+
+input:disabled {
+  background-color: $color-light-gray;
+}
+
+.translation-error {
+  color: $color-error;
+  margin: 7px 0;
 }
 
 .output-languages {

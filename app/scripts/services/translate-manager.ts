@@ -7,6 +7,7 @@ class TranslateManager {
   private targetLanguages: TargetLanguageView[];
   private didYouMean: string;
   private translationInProgress: boolean;
+  private lastError: string;
 
   private translationsCounterFreeze: number;
 
@@ -21,10 +22,14 @@ class TranslateManager {
 
     this.didYouMean = null;
     this.translationInProgress = false;
+    this.lastError = '';
 
     this.googleTranslateApi.getLanguages()
       .then(result => {
         this.targetLanguages = result;
+      })
+      .catch(err => {
+        this.lastError = "Failed to retrieve languages. Please make sure server is up & running (or set enableMocks==true)";
       });
   }
 
@@ -40,6 +45,10 @@ class TranslateManager {
     return this.didYouMean;
   }
 
+  getLastError(): string {
+    return this.lastError;
+  }
+
   isTranslationInProgress(): boolean {
     return this.translationInProgress;
   }
@@ -51,6 +60,7 @@ class TranslateManager {
   translate(originalText: string, sourceLanguage: string, targetLanguages: string[]): ng.IPromise<TranslationResultView[]> {
     this.didYouMean = null;
     this.translationInProgress = true;
+    this.lastError = '';
     this.translationsCounterFreeze = this.googleTranslateApi.resolvedCounter;
 
     let promiseMap: ng.IPromise<TranslationResultServerExtract>[] =
@@ -71,6 +81,11 @@ class TranslateManager {
             transliteration: resolvedTranslations[index].transliteration
           };
         });
+      })
+      .catch(err => {
+        this.lastError = err.data.error;
+        this.translationInProgress = false;
+        return this.$q.reject(this.lastError);
       });
   }
 

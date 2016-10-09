@@ -23,6 +23,10 @@ class TranslationBox {
     return this.translateManager.getAllTargetLanguages();
   }
 
+  getLastError(): string {
+    return this.translateManager.getLastError();
+  }
+
   isLockSearch(): boolean {
     return !this.input || this.targetLanguages.length === 0 || this.isInProgress();
   }
