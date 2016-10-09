@@ -29,7 +29,7 @@ class TranslateManager {
         this.targetLanguages = result;
       })
       .catch(err => {
-        this.lastError = "Failed to retrieve languages. Please make sure server is up & running (or set enableMocks==true)";
+        this.lastError = 'Failed to retrieve languages. Please make sure server is up & running (or set enableMocks==true)';
       });
   }
 
