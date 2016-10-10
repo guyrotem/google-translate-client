@@ -2,7 +2,7 @@
   "name": "google-translate1x",
   "version": "1.0.0",
   "scripts": {
-    "postinstall": "bower install; grunt build",
+    "postinstall": "bower install; grunt build;",
     "test": "",
     "release": "",
     "start": "grunt run"
