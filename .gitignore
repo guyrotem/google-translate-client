@@ -21,3 +21,4 @@ Gruntfile.private.js
 reference.ts
 .baseDir.ts
 .tscache
+.env
