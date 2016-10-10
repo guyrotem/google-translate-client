@@ -2,7 +2,7 @@
 Multi-lingual sample app for the [google-translate-server (proxy)](https://github.com/guyrotem/google-translate-server/).
 It allows you to translate phrases to multiple languages simultaneously, using the Google translate API proxy, but there's whole lot of other stuff you can do, it's just a sample app.
 AngularJS 1.5.x, using [wix-gruntfile](https://github.com/wix/wix-gruntfile) as a dev framework.
-[**See demo here**](https://google-translate-client.herokuapp.com/)
+###[**See demo here**](https://google-translate-client.herokuapp.com/)###
 
 ## Setup
 
@@ -13,6 +13,8 @@ AngularJS 1.5.x, using [wix-gruntfile](https://github.com/wix/wix-gruntfile) as 
 3.  run project
   1. for local dev: **"grunt run"**
   2. to build project: "grunt build"
+  
+* if you are encountering ruby related issues, try running `gem install bundler; bundle install;` and then repeat the process above.
 
 ## Local dev
 
