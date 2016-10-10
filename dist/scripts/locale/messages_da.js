@@ -1,0 +1,1 @@
+"use strict";try{angular.module("wixAppTranslations")}catch(e){angular.module("wixAppTranslations",["pascalprecht.translate"])}angular.module("wixAppTranslations").config(["$translateProvider",function(a){var b={general:{YO:"Hej"}};a.translations("da",b),a.translations(b),a.preferredLanguage&&a.preferredLanguage("da")}]).value("preferredLanguage","da");
