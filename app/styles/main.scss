@@ -5,10 +5,12 @@ $wix-helvetica-75: Arial;
 
 $button-active: #3388ff;
 $button-disabled: #999999;
+$color-results-counter: #233cd8;
 $color-warning: #ee9988;
 $color-error: #df2020;
 $color-gray-dark: #6f6f6f;
 $color-white: #ffffff;
+$color-shadow-glow: #cfff20;
 
 .container,
 .footer {
@@ -27,6 +29,7 @@ button {
   border: 0;
   height: 33px;
   box-shadow: 2px 2px 7px 0 $color-gray-dark;
+  margin: 0 8px;
 
   &:disabled {
     background-color: $button-disabled;
@@ -35,6 +38,18 @@ button {
   &:hover:not(:disabled) {
     opacity: .8;
   }
+}
+
+.search-button-container {
+  display: inline-block;
+  margin: 0 10px;
+}
+
+.search-results-counter {
+  display: inline-block;
+  color: $color-results-counter;
+  box-shadow: 1px 1px 28px 1px $color-shadow-glow;
+  border-radius: 7px;
 }
 
 input {

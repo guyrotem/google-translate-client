@@ -3,18 +3,18 @@
     .div
       %div
         %span Target Languages:
-        %ui-select(ng-model="$ctrl.targetLanguages" theme="bootstrap" ng-disabled="!$ctrl.getTargetLanguageOptions()" multiple)
+        %ui-select(ng-model="$ctrl.targetLanguages" theme="bootstrap" ng-disabled="$ctrl.isLockUi()" multiple)
           %ui-select-match(placeholder="Spanish, French, Bengali, ...")
             {{ $item.name }}
           %ui-select-choices(repeat="targetLanguage.code as targetLanguage in $ctrl.getTargetLanguageOptions() | filter:$select.search")
             {{ targetLanguage.name }}
       .translation-input
         %div Text
-        %input.free-text(name='input' ng-model='$ctrl.input' autocomplete="off" placeholder="{{$ctrl.getTargetLanguageOptions() ? 'where is the bus stop?' : ''}}" ng-disabled="!$ctrl.getTargetLanguageOptions()")
-        %span
+        %input.free-text(name='input' ng-model='$ctrl.input' autocomplete="off" placeholder="{{$ctrl.getTargetLanguageOptions() ? 'where is the bus stop?' : ''}}" ng-disabled="$ctrl.isLockUi()")
+        .search-button-container
           %button(type='submit' ng-disabled='$ctrl.isLockSearch()' value='Translate!')
             GO!
-        %span(ng-if='$ctrl.isInProgress()')
+        .search-results-counter(ng-show='$ctrl.isInProgress()')
           {{$ctrl.translationsDoneCounter()}} / {{$ctrl.targetLanguages.length}}
 
 

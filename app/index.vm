@@ -54,6 +54,7 @@
     <script src="scripts/services/google-translate-api.js"></script>
     <script src="scripts/components/translation-box.js"></script>
     <script src="scripts/services/translate-manager.js"></script>
+    <script src="scripts/components/dinosaur.js"></script>
     <!-- endbuild --><!-- scripts -->
     <!-- end-process-tags -->
 

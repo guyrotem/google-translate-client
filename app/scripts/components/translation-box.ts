@@ -47,6 +47,10 @@ class TranslationBox {
     return this.translateManager.translationsDoneCounter();
   }
 
+  isLockUi(): boolean {
+    return !this.getTargetLanguageOptions() || this.translateManager.isTranslationInProgress();
+  }
+
   submit() {
     this.lastResult = [];
     let sourceLanguage = 'auto';
