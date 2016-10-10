@@ -3,7 +3,6 @@
   "version": "1.0.0",
   "scripts": {
     "build": "npm install; bower install; grunt build",
-    "install": "npm install; bower install; grunt build",
     "release": "node_modules/wix-gruntfile/scripts/release.sh",
     "test": "#tbd",
     "start": "grunt run"
