@@ -7,11 +7,6 @@
     "start": "grunt run"
   },
   "private": true,
-  "devDependencies": {
-    "wix-gruntfile": "^0.1.231",
-    "body-parser": "^1.12.3",
-    "express-session": "^1.11.3"
-  },
   "engines": {
     "node": ">=0.8.0"
   },
@@ -21,6 +16,9 @@
     "grunt": "^1.0.1",
     "grunt-cli": "^1.2.0",
     "gzippo": "^0.2.0",
-    "request": "^2.75.0"
+    "request": "^2.75.0",
+    "wix-gruntfile": "^0.1.231",
+    "body-parser": "^1.12.3",
+    "express-session": "^1.11.3"
   }
 }
