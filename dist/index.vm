@@ -56,10 +56,6 @@
 <script src="${staticsUrl}_debug_scripts/services/google-translate-api.js"></script>
 <script src="${staticsUrl}_debug_scripts/components/translation-box.js"></script>
 <script src="${staticsUrl}_debug_scripts/services/translate-manager.js"></script><!-- #end -->
-    <!-- #if( !${debug} ) -->
-<script src="${staticsUrl}scripts/locale/messages_${locale}.js"></script>
-<!-- #else -#if( false )#end->
-<script src="${staticsUrl}_debug_scripts/locale/messages_${locale}.js"></script><!-- #end -->
 
     <!-- #if( ${enableMocks} ) -->
     <script src="bower_components/angular-mocks/angular-mocks.js"></script>

@@ -10,11 +10,11 @@ app.use(gzippo.staticGzip("" + __dirname + "/dist"));
 var target = 'https://google-translate-proxy.herokuapp.com';
 
 app.get("/api/languages", function (req, res) {
+  // req.pipe(request(target + '/languages')).pipe(res);
   res.redirect(target + '/languages');
 });
 
 app.post("/api/translate", function (req, res) {
-  var url = target + '/translate';
-  req.pipe(request(url)).pipe(res);
+  req.pipe(request(target + '/translate')).pipe(res);
 });
 app.listen(process.env.PORT || 5000);

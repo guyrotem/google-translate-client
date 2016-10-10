@@ -56,9 +56,6 @@
     <script src="scripts/components/translation-box.js"></script>
     <script src="scripts/services/translate-manager.js"></script>
     <!-- endbuild --><!-- scripts -->
-    <!-- build:locale({.tmp,app}) scripts/locale/messages_${locale}.js -->
-    <script src="scripts/locale/messages_${locale}.js"></script>
-    <!-- endbuild -->
     <!-- end-process-tags -->
 
     <!-- #if( ${enableMocks} ) -->

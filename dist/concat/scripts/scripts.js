@@ -91,29 +91,6 @@ angular.module('googleTranslate1xPreload').run(['$templateCache', function ($tem
     "</div>\n"
   );
 }]);
-'use strict';
-
-try {
-  angular.module('wixAppTranslations');
-} catch (e) {
-  angular.module('wixAppTranslations', ['pascalprecht.translate']);
-}
-
-angular.module('wixAppTranslations').config(['$translateProvider',
-  function ($translateProvider) {
-    var translations = {
-      'general': {
-        'YO': 'Hello'
-      }
-    };
-    $translateProvider.translations('en', translations);
-    $translateProvider.translations(translations);
-    if ($translateProvider.preferredLanguage) {
-      $translateProvider.preferredLanguage('en');
-    }
-  }
-]).value('preferredLanguage', 'en');
-
 /// <reference path="../../../reference.ts" />
 'use strict';
 var GoogleTranslate1xApp = (function () {
