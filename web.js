@@ -1,7 +1,6 @@
 var gzippo = require('gzippo');
 var express = require('express');
-var httpProxy = require('http-proxy');
-var proxy = httpProxy.createProxyServer();
+var request = require('request');
 var app = express();
 
 // app.use(express.logger('dev'));
@@ -15,7 +14,7 @@ app.get("/api/languages", function (req, res) {
 });
 
 app.post("/api/translate", function (req, res) {
-  req.url = '/translate';
-  proxy.web(req, res, { target: target });
+  var url = target + '/translate';
+  req.pipe(request(url)).pipe(res);
 });
 app.listen(process.env.PORT || 5000);
