@@ -2,8 +2,8 @@
   "name": "google-translate1x",
   "version": "1.0.0",
   "scripts": {
-    "build": "bundle install; npm install; bower install; grunt build",
-    "install": "bundle install; npm install; bower install; grunt build",
+    "build": "npm install; bower install; grunt build",
+    "install": "npm install; bower install; grunt build",
     "release": "node_modules/wix-gruntfile/scripts/release.sh",
     "test": "#tbd",
     "start": "grunt run"
