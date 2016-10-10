@@ -21,3 +21,4 @@ reference.ts
 .baseDir.ts
 .tscache
 .env
+dist

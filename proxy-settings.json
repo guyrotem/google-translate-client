@@ -1,6 +1,6 @@
 {
   "translationServer": {
-    "serverUrl": "http://localhost:9333",
+    "serverUrl": "http://localhost:9333/api",
     "proxyPath": "/api/"
   }
 }

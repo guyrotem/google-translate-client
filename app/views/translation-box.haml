@@ -10,7 +10,7 @@
             {{ targetLanguage.name }}
       .translation-input
         %div Text
-        %input(name='input' ng-model='$ctrl.input' autocomplete="off" placeholder="{{$ctrl.getTargetLanguageOptions() ? 'where is the bus stop?' : ''}}" ng-disabled="!$ctrl.getTargetLanguageOptions()")
+        %input.free-text(name='input' ng-model='$ctrl.input' autocomplete="off" placeholder="{{$ctrl.getTargetLanguageOptions() ? 'where is the bus stop?' : ''}}" ng-disabled="!$ctrl.getTargetLanguageOptions()")
         %span
           %button(type='submit' ng-disabled='$ctrl.isLockSearch()' value='Translate!')
             GO!

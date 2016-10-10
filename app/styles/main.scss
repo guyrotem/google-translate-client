@@ -10,7 +10,8 @@ $color-error: #df2020;
 $color-gray-dark: #6f6f6f;
 $color-white: #ffffff;
 
-.container {
+.container,
+.footer {
   margin: auto;
   width: 1020px;
 }
@@ -24,10 +25,15 @@ button {
   border-radius: 5px;
   outline: none;
   border: 0;
+  height: 33px;
   box-shadow: 2px 2px 7px 0 $color-gray-dark;
 
   &:disabled {
     background-color: $button-disabled;
+  }
+
+  &:hover:not(:disabled) {
+    opacity: .8;
   }
 }
 
@@ -35,6 +41,7 @@ input {
   outline: none;
   border-width: 0;
   padding: 0 6px;
+  border-radius: 6px;
 }
 
 $gradient-green1: #64e384;
@@ -49,7 +56,7 @@ $color-light-gray: #dfdfdf;
   line-height: 30px;
   box-shadow: 4px 4px 7px 2px $color-light-gray;
   background: linear-gradient(to bottom, $gradient-green11 0, $gradient-green22 50%, $gradient-green11 100%);
-  border-radius: 6px;
+  border-radius: 12px;
   padding: 60px;
   margin: 30px;
 
@@ -90,5 +97,18 @@ input:disabled {
   .result-language {
     color: $color-white;
   }
+}
+
+.horizontal-ul {
+  list-style: none;
+  padding: 0;
+
+  li {
+    display: inline-block;
+  }
+}
+
+.octicon-mark-github {
+  vertical-align: bottom;
 }
 
