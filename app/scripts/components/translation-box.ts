@@ -3,7 +3,7 @@
 
 class TranslationBox {
 
-  translationForm: ng.IFormController;
+  //translationForm: ng.IFormController;
   targetLanguages: string[];
 
   input: string;
@@ -49,6 +49,10 @@ class TranslationBox {
 
   isLockUi(): boolean {
     return !this.getTargetLanguageOptions() || this.translateManager.isTranslationInProgress();
+  }
+
+  orderLangsBy(what: number) {
+    this.translateManager.orderLangsBy(what);
   }
 
   submit() {

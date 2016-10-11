@@ -1,10 +1,15 @@
 %div
   %form(name='$ctrl.translationForm' ng-submit='$ctrl.submit()')
-    .div
-      %div
-        %span Target Languages:
+    .translation-settings
+      .target-languages
+        .header
+          %span Target Languages:
+          %span.sort-by
+            %span order options by:
+            %span.link(ng-click="$ctrl.orderLangsBy(0)") ABC
+            %span.link(ng-click="$ctrl.orderLangsBy(1)") popularity
         %ui-select(ng-model="$ctrl.targetLanguages" theme="bootstrap" ng-disabled="$ctrl.isLockUi()" multiple)
-          %ui-select-match(placeholder="Spanish, French, Bengali, ...")
+          %ui-select-match(placeholder="{{$ctrl.getTargetLanguageOptions() ? 'Spanish, French, Bengali, ...' : 'Loading languages, please wait...'}}")
             {{ $item.name }}
           %ui-select-choices(repeat="targetLanguage.code as targetLanguage in $ctrl.getTargetLanguageOptions() | filter:$select.search")
             {{ targetLanguage.name }}
@@ -24,7 +29,7 @@
         %span {{ $ctrl.didYouMean() }}
 
     .output-languages
-      .translation-results(ng-repeat='translationItem in $ctrl.getTranslations()')
+      .translation-result(ng-repeat='translationItem in $ctrl.getTranslations()')
         .result-language {{translationItem.language}}
         .result-value {{translationItem.translation}}
         .result-transliteration {{translationItem.transliteration}}

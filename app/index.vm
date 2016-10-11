@@ -23,10 +23,10 @@
     <link type="image/png" href="images/china-glow.png" rel="shortcut icon">
     <!-- process-tags prefix('${staticsUrl}') -->
     <!-- build:css({.tmp,app}) styles/main.css -->
-    <link rel="stylesheet" href="styles/main.css">
-    <link rel="stylesheet" href="styles/dinosaur.css">
     <link rel="stylesheet" href="bower_components/angular-ui-select/dist/select.css">
     <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css">
+    <link rel="stylesheet" href="styles/dinosaur.css">
+    <link rel="stylesheet" href="styles/main.css">
     <!-- endbuild -->
     <!-- end-process-tags -->
     ${newRelicEndUserHeader}

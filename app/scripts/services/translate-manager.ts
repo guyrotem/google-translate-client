@@ -2,33 +2,25 @@
 'use strict';
 
 class TranslateManager {
-
-  private sourceLanguages: { [key: string]: string; };
   private targetLanguages: TargetLanguageView[];
   private didYouMean: string;
   private translationInProgress: boolean;
   private lastError: string;
+  private langOrdering: number;
 
   private translationsCounterFreeze: number;
 
   /* @ngInject */
-  constructor(private googleTranslateApi: GoogleTranslateApi, private $q: ng.IQService) {
-    this.sourceLanguages = {
-      auto: 'Auto',
-      en: 'English',
-      es: 'Spanish',
-      fr: 'French'
-    };
-
+  constructor(private googleTranslateApi: GoogleTranslateApi, private $q: ng.IQService, private $window: ng.IWindowService) {
     this.didYouMean = null;
     this.translationInProgress = false;
     this.lastError = '';
 
     this.googleTranslateApi.getLanguages()
       .then(result => {
-        this.targetLanguages = result;
+          this.targetLanguages = result;
       })
-      .catch(err => {
+      .catch(() => {
         this.lastError = 'Failed to retrieve languages. Please make sure server is up & running (or set enableMocks==true)';
       });
   }
@@ -57,11 +49,30 @@ class TranslateManager {
     return this.googleTranslateApi.resolvedCounter - this.translationsCounterFreeze;
   }
 
+  orderLangsBy(what: number) {
+    this.langOrdering = what;
+
+    let sorter = (value, index) => {
+      let storageVal = window.localStorage.getItem(value.code) || 0;
+      return parseInt(storageVal, 10);
+    };
+
+    if (what === 0) {
+      this.targetLanguages = _.sortBy(this.targetLanguages, 'name');
+    } else if (what === 1) {
+      this.targetLanguages = _.sortBy(this.targetLanguages, sorter).reverse();
+    } else {
+      console.error(`What is ${what}?`);
+    }
+  }
+
   translate(originalText: string, sourceLanguage: string, targetLanguages: string[]): ng.IPromise<TranslationResultView[]> {
     this.didYouMean = null;
     this.translationInProgress = true;
     this.lastError = '';
     this.translationsCounterFreeze = this.googleTranslateApi.resolvedCounter;
+
+    this.updateLanguageUsageStatistics(targetLanguages);
 
     let promiseMap: ng.IPromise<TranslationResultServerExtract>[] =
       targetLanguages.map(l => this.googleTranslateApi.translate(originalText, sourceLanguage, l));
@@ -93,6 +104,13 @@ class TranslateManager {
     return this.targetLanguages
       .find(x => x.code === langCode)
       .name;
+  }
+
+  private updateLanguageUsageStatistics(targetLangs: string[]) {
+    targetLangs.map((lang) => {
+      var langCount = this.$window.localStorage.getItem(lang) || 0;
+      this.$window.localStorage.setItem(lang, (parseInt(langCount, 10) + 1).toString());
+    });
   }
 }
 

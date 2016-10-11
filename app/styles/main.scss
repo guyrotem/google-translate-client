@@ -60,6 +60,21 @@ button {
   border-radius: 7px;
 }
 
+.target-languages .header {
+  .sort-by {
+    font-size: 10px;
+  }
+
+  .link {
+    color: $color-results-counter;
+
+    &:hover {
+      text-decoration: underline;
+      cursor: pointer;
+    }
+  }
+}
+
 input {
   outline: none;
   border-width: 0;
@@ -109,7 +124,7 @@ input:disabled {
   margin-top: 15px;
 }
 
-.translation-results {
+.translation-result {
   display: table-row;
 
   * {
@@ -129,6 +144,10 @@ input:disabled {
   li {
     display: inline-block;
   }
+}
+
+.ui-select-bootstrap > .ui-select-choices {
+  width: 40%;
 }
 
 .octicon-mark-github {
