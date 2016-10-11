@@ -24,27 +24,27 @@ angular.module('googleTranslate1xAppMocks', ['ngMockE2E'])
   })
   .constant('languages2', [
     {
+      name: 'Chinese',
+      code: 'zh'
+    },
+    {
       name: 'English',
       code: 'en'
-    },
-    {
-      name: 'Portuguese',
-      code: 'pt'
-    },
-    {
-      name: 'Spanish',
-      code: 'es'
     },
     {
       name: 'French',
       code: 'fr'
     },
     {
+      name: 'Portuguese',
+      code: 'pt'
+    },
+    {
       name: 'Russian',
       code: 'ru'
     },
     {
-      name: 'Chinese',
-      code: 'zh'
+      name: 'Spanish',
+      code: 'es'
     }
   ]);

@@ -2,7 +2,8 @@
 'use strict';
 
 class TranslateManager {
-  private targetLanguages: TargetLanguageView[];
+  private targetLanguagesSource: TargetLanguageView[];
+  private targetLanguagesActive: TargetLanguageView[];
   private didYouMean: string;
   private translationInProgress: boolean;
   private lastError: string;
@@ -11,14 +12,15 @@ class TranslateManager {
   private translationsCounterFreeze: number;
 
   /* @ngInject */
-  constructor(private googleTranslateApi: GoogleTranslateApi, private $q: ng.IQService, private $window: ng.IWindowService) {
+  constructor(private googleTranslateApi: GoogleTranslateApi, private $q: ng.IQService, private $window: ng.IWindowService, private localStorage: LocalStorage) {
     this.didYouMean = null;
     this.translationInProgress = false;
     this.lastError = '';
 
     this.googleTranslateApi.getLanguages()
       .then(result => {
-          this.targetLanguages = result;
+        this.targetLanguagesSource = result;
+        this.targetLanguagesActive = result;
       })
       .catch(() => {
         this.lastError = 'Failed to retrieve languages. Please make sure server is up & running (or set enableMocks==true)';
@@ -26,11 +28,11 @@ class TranslateManager {
   }
 
   getAllTargetLanguages(): TargetLanguageView[] {
-    return this.targetLanguages;
+    return this.targetLanguagesActive;
   }
 
   getAllTargetLanguageCodes(): string[] {
-    return _.map(this.targetLanguages, x => x.code);
+    return _.map(this.targetLanguagesActive, x => x.code);
   }
 
   getDidYouMeanFix(): string {
@@ -52,15 +54,15 @@ class TranslateManager {
   orderLangsBy(what: number) {
     this.langOrdering = what;
 
-    let sorter = (value, index) => {
-      let storageVal = window.localStorage.getItem(value.code) || 0;
-      return -1 * parseInt(storageVal, 10);
+    let popularitySorter = (value: TargetLanguageView) => {
+      let storageVal = this.localStorage.getLanguageUsageCount(value.code);
+      return -1 * storageVal;
     };
 
     if (what === 0) {
-      this.targetLanguages = _.sortBy(this.targetLanguages, 'name');
+      this.targetLanguagesActive = _.sortBy(this.targetLanguagesSource, 'name');
     } else if (what === 1) {
-      this.targetLanguages = _.sortBy(this.targetLanguages, sorter);
+      this.targetLanguagesActive = _.sortBy(this.targetLanguagesSource, popularitySorter);
     } else {
       console.error(`What is ${what}?`);
     }
@@ -101,16 +103,13 @@ class TranslateManager {
   }
 
   private langCodeToName(langCode: string): string {
-    return this.targetLanguages
+    return this.targetLanguagesSource
       .find(x => x.code === langCode)
       .name;
   }
 
   private updateLanguageUsageStatistics(targetLangs: string[]) {
-    targetLangs.map((lang) => {
-      var langCount = this.$window.localStorage.getItem(lang) || 0;
-      this.$window.localStorage.setItem(lang, (parseInt(langCount, 10) + 1).toString());
-    });
+    targetLangs.map(this.localStorage.incrementLanguageUsageCount.bind(this.localStorage));
   }
 }
 
