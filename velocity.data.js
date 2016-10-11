@@ -5,8 +5,7 @@ module.exports = {
   enableMocks: false,
   locale: 'en',
   clientTopology: {
-    googleTranslate1xStaticsUrl: '',
-    staticBaseUrl: '//static.parastorage.com/'
+    googleTranslate1xStaticsUrl: ''
   },
   newRelicEndUserHeader: '',
   newRelicEndUserFooter: ''

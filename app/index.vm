@@ -38,9 +38,9 @@
     
 
     <!-- process-tags prefix('${staticsUrl}') -->
+    <!-- build:js scripts/modules.js -->
     <script src="bower_components/jquery/jquery.js"></script>
     <script src="bower_components/angular/angular.js"></script>
-    <!-- build:js scripts/modules.js -->
     <script src="bower_components/es6-shim/es6-shim.js"></script>
     <script src="bower_components/uri.js/src/URI.js"></script>
     <script src="bower_components/lodash/lodash.js"></script>

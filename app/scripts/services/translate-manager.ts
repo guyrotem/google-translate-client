@@ -54,13 +54,13 @@ class TranslateManager {
 
     let sorter = (value, index) => {
       let storageVal = window.localStorage.getItem(value.code) || 0;
-      return parseInt(storageVal, 10);
+      return -1 * parseInt(storageVal, 10);
     };
 
     if (what === 0) {
       this.targetLanguages = _.sortBy(this.targetLanguages, 'name');
     } else if (what === 1) {
-      this.targetLanguages = _.sortBy(this.targetLanguages, sorter).reverse();
+      this.targetLanguages = _.sortBy(this.targetLanguages, sorter);
     } else {
       console.error(`What is ${what}?`);
     }

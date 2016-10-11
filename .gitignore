@@ -22,3 +22,4 @@ reference.ts
 .tscache
 .env
 dist
+velocity.private.data.js
