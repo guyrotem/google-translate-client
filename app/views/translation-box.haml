@@ -2,19 +2,22 @@
   %form(name='$ctrl.translationForm' ng-submit='$ctrl.submit()')
     .translation-settings
       .target-languages
-        .header
-          %span Target Languages:
-          %span.sort-by
-            %span order options by:
-            %span.link(ng-click="$ctrl.orderLangsBy(0)") ABC
-            %span.link(ng-click="$ctrl.orderLangsBy(1)") popularity
+        .text-label
+          %span.header Target Languages:
+          %span.sort-by(ng-if="$ctrl.isSortingAllowed()")
+            %span sort options by:
+            %span(ng-repeat="option in $ctrl.getSortingOptions()" ng-click="$ctrl.orderLangsBy(option.id)")
+              %span.link(ng-class="{'selected': $ctrl.isSelectedSorting(option)}") {{option.label}}
+              %span(ng-show="!$last")
+                \|
+              -#{{option.label + ($last ? '' : ' |')}}
         %ui-select(ng-model="$ctrl.targetLanguages" theme="bootstrap" ng-disabled="$ctrl.isLockUi()" multiple)
           %ui-select-match(placeholder="{{$ctrl.getTargetLanguageOptions() ? 'Spanish, French, Bengali, ...' : 'Loading languages, please wait...'}}")
             {{ $item.name }}
           %ui-select-choices(repeat="targetLanguage.code as targetLanguage in $ctrl.getTargetLanguageOptions() | filter:$select.search")
-            {{ targetLanguage.name }}
-      .translation-input
-        %div Text
+            %span(ng-class="{'popular': $ctrl.isPopularTargetLanguage(targetLanguage)}") {{ targetLanguage.name }}
+      .translation-input-container
+        %div.header Text
         %input.free-text(name='input' ng-model='$ctrl.input' autocomplete="off" placeholder="{{$ctrl.getTargetLanguageOptions() ? 'translate me...' : ''}}" ng-disabled="$ctrl.isLockUi()")
         .search-button-container
           %button(type='submit' ng-disabled='$ctrl.isLockSearch()' value='Translate!')

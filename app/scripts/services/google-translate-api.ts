@@ -26,7 +26,7 @@ class GoogleTranslateApi {
       });
   }
 
-  getLanguages(): ng.IPromise<TargetLanguageView[]> {
+  getLanguages(): ng.IPromise<TargetLanguageServer[]> {
     return this.$http.get('/api/languages')
       .then(resposne => resposne.data);
   }

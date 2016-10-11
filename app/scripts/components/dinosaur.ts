@@ -7,8 +7,8 @@ class Dinosaur {
   constructor(private translateManager: TranslateManager) { }
 
   isShowDino() {
-    return this.translateManager.isTranslationInProgress()
-      || !this.translateManager.getAllTargetLanguages();
+    return this.translateManager.isLoading() ||
+      this.translateManager.isTranslationInProgress();
   }
 }
 

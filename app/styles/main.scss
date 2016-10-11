@@ -10,26 +10,47 @@ $color-warning: #ee9988;
 $color-error: #df2020;
 $color-gray-dark: #6f6f6f;
 $color-white: #ffffff;
-$color-shadow-glow: #cfff20;
+$color-shadow-glow: #ffff00;
 
-.container,
-.footer {
-  margin: auto;
+$color-wix-dark-black: #242424;
+$color-google-font: #545454;
+
+$color-text-shadow: #bebebe;
+
+@mixin text-header {
+  color: $color-wix-dark-black;
+}
+
+@mixin text-content {
+  color: $color-google-font;
+}
+
+@mixin fake-link {
+  color: $color-results-counter;
+
+  &:hover {
+    text-decoration: underline;
+    cursor: pointer;
+  }
+}
+
+.app-container {
+  @include text-content;
+  margin: 30px auto;
   width: 1020px;
+  font-family: HelveticaNeueW01-Thin,HelveticaNeueW02-Thin,HelveticaNeueW10-35Thin,sans-serif;
 }
 
 .powered-by-google {
   margin-left: 10px;
 }
 
-button {
+@mixin button {
   background-color: $button-active;
   border-radius: 5px;
   outline: none;
   border: 0;
-  height: 33px;
   box-shadow: 2px 2px 7px 0 $color-gray-dark;
-  margin: 0 8px;
 
   &:disabled {
     background-color: $button-disabled;
@@ -40,12 +61,26 @@ button {
   }
 }
 
-.free-text {
-  font-family: Helvetica, sans-serif;
-  font-size: 16px;
-  line-height: 35px;
-  width: 228px;
-  padding: 0 10px;
+button {
+  @include button;
+
+  height: 33px;
+  margin: 0 8px;
+}
+
+.translation-input-container {
+  .header {
+    @include text-header;
+  }
+
+  .free-text {
+    font-family: Helvetica, sans-serif;
+    font-size: 16px;
+    line-height: 35px;
+    width: 228px;
+    padding: 0 10px;
+  }
+
 }
 
 .search-button-container {
@@ -53,25 +88,28 @@ button {
   margin: 0 10px;
 }
 
+$gradient-stop1: rgba(250, 243, 163, 1);
+
 .search-results-counter {
   display: inline-block;
   color: $color-results-counter;
-  box-shadow: 1px 1px 28px 1px $color-shadow-glow;
+  box-shadow: 0 0 34px 4px $color-shadow-glow;
   border-radius: 7px;
+  background: radial-gradient(ellipse at center, $color-white 0%, $color-white 19%, $gradient-stop1 41%, rgba(240, 228, 93, 1) 73%, $color-shadow-glow 100%);
 }
 
-.target-languages .header {
+.target-languages .text-label {
+
+  .header {
+    @include text-header;
+  }
+
   .sort-by {
     font-size: 10px;
   }
 
-  .link {
-    color: $color-results-counter;
-
-    &:hover {
-      text-decoration: underline;
-      cursor: pointer;
-    }
+  .link:not(.selected) {
+    @include fake-link;
   }
 }
 
@@ -96,7 +134,6 @@ $color-light-gray: #dfdfdf;
   background: linear-gradient(to bottom, $gradient-green11 0, $gradient-green22 50%, $gradient-green11 100%);
   border-radius: 12px;
   padding: 60px;
-  margin: 30px;
 
   .did-you-mean {
     font-style: italic;
@@ -108,6 +145,8 @@ $color-light-gray: #dfdfdf;
     font-size: 60px;
     line-height: 1;
     letter-spacing: -1px;
+    color: $color-wix-dark-black;
+    text-shadow: 2px -3px $color-text-shadow;
   }
 }
 
@@ -137,9 +176,14 @@ input:disabled {
   }
 }
 
+footer {
+  margin: 8px 12px;
+}
+
 .horizontal-ul {
   list-style: none;
   padding: 0;
+  text-shadow: .6px .6px $color-text-shadow;
 
   li {
     display: inline-block;
@@ -150,7 +194,10 @@ input:disabled {
   width: 40%;
 }
 
+.ui-select-choices-row .popular {
+  font-weight: bold;
+}
+
 .octicon-mark-github {
   vertical-align: bottom;
 }
-

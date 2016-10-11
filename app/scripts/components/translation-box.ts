@@ -10,7 +10,8 @@ class TranslationBox {
   private lastResult: TranslationResultView[];
 
   /* @ngInject */
-  constructor(private translateManager: TranslateManager) {
+  constructor(private translateManager: TranslateManager, private sortLanguage: SortLanguage,
+              private languagesManager: LanguagesManager, private hypeOMeter: HypeOMeter) {
     this.lastResult = [];
     this.targetLanguages = [];
   }
@@ -31,6 +32,26 @@ class TranslationBox {
     return !this.input || this.targetLanguages.length === 0 || this.isInProgress();
   }
 
+  isLockUi(): boolean {
+    return !this.getTargetLanguageOptions() || this.translateManager.isTranslationInProgress();
+  }
+
+  isSortingAllowed(): boolean {
+    return !!this.getTargetLanguageOptions();
+  }
+
+  getSortingOptions(): LangSortOption[] {
+    return this.sortLanguage.getSortingOptions();
+  }
+
+  isSelectedSorting(option: LangSortOption): boolean {
+    return this.sortLanguage.isSelectedSorting(option);
+  }
+
+  isPopularTargetLanguage(lang: TargetLanguageView): boolean {
+    return this.hypeOMeter.isPopularTargetLanguage(lang);
+  }
+
   showDidYouMean(): boolean {
     return this.translateManager.getDidYouMeanFix() !== null;
   }
@@ -47,12 +68,8 @@ class TranslationBox {
     return this.translateManager.translationsDoneCounter();
   }
 
-  isLockUi(): boolean {
-    return !this.getTargetLanguageOptions() || this.translateManager.isTranslationInProgress();
-  }
-
   orderLangsBy(what: number) {
-    this.translateManager.orderLangsBy(what);
+    this.languagesManager.orderLangsBy(what);
   }
 
   submit() {

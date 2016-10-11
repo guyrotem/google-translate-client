@@ -2,37 +2,39 @@
 'use strict';
 
 class TranslateManager {
-  private targetLanguagesSource: TargetLanguageView[];
-  private targetLanguagesActive: TargetLanguageView[];
   private didYouMean: string;
   private translationInProgress: boolean;
   private lastError: string;
-  private langOrdering: number;
+  private _isLoading: boolean;
 
   private translationsCounterFreeze: number;
 
   /* @ngInject */
-  constructor(private googleTranslateApi: GoogleTranslateApi, private $q: ng.IQService, private $window: ng.IWindowService, private localStorage: LocalStorage) {
+  constructor(private googleTranslateApi: GoogleTranslateApi, private $q: ng.IQService,
+              private localStorage: LocalStorage, private languagesManager: LanguagesManager) {
     this.didYouMean = null;
     this.translationInProgress = false;
     this.lastError = '';
+    this._isLoading = true;
 
     this.googleTranslateApi.getLanguages()
-      .then(result => {
-        this.targetLanguagesSource = result;
-        this.targetLanguagesActive = result;
+      .then(results => {
+        this.languagesManager.setLanguages(results);
       })
       .catch(() => {
         this.lastError = 'Failed to retrieve languages. Please make sure server is up & running (or set enableMocks==true)';
+      })
+      .finally(() => {
+        this._isLoading = false;
       });
   }
 
-  getAllTargetLanguages(): TargetLanguageView[] {
-    return this.targetLanguagesActive;
+  isLoading(): boolean {
+    return this._isLoading;
   }
 
-  getAllTargetLanguageCodes(): string[] {
-    return _.map(this.targetLanguagesActive, x => x.code);
+  getAllTargetLanguages(): TargetLanguageView[] {
+    return this.languagesManager.getActiveLanguages();
   }
 
   getDidYouMeanFix(): string {
@@ -49,23 +51,6 @@ class TranslateManager {
 
   translationsDoneCounter(): number {
     return this.googleTranslateApi.resolvedCounter - this.translationsCounterFreeze;
-  }
-
-  orderLangsBy(what: number) {
-    this.langOrdering = what;
-
-    let popularitySorter = (value: TargetLanguageView) => {
-      let storageVal = this.localStorage.getLanguageUsageCount(value.code);
-      return -1 * storageVal;
-    };
-
-    if (what === 0) {
-      this.targetLanguagesActive = _.sortBy(this.targetLanguagesSource, 'name');
-    } else if (what === 1) {
-      this.targetLanguagesActive = _.sortBy(this.targetLanguagesSource, popularitySorter);
-    } else {
-      console.error(`What is ${what}?`);
-    }
   }
 
   translate(originalText: string, sourceLanguage: string, targetLanguages: string[]): ng.IPromise<TranslationResultView[]> {
@@ -89,7 +74,7 @@ class TranslateManager {
 
         return targetLanguages.map((langCode, index) => {
           return {
-            language: this.langCodeToName(langCode),
+            language: this.languagesManager.langCodeToName(langCode),
             translation: resolvedTranslations[index].translation,
             transliteration: resolvedTranslations[index].transliteration
           };
@@ -100,12 +85,6 @@ class TranslateManager {
         this.translationInProgress = false;
         return this.$q.reject(this.lastError);
       });
-  }
-
-  private langCodeToName(langCode: string): string {
-    return this.targetLanguagesSource
-      .find(x => x.code === langCode)
-      .name;
   }
 
   private updateLanguageUsageStatistics(targetLangs: string[]) {
