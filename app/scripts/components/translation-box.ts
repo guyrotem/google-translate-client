@@ -11,9 +11,11 @@ class TranslationBox {
 
   /* @ngInject */
   constructor(private translateManager: TranslateManager, private sortLanguage: SortLanguage,
-              private languagesManager: LanguagesManager, private hypeOMeter: HypeOMeter) {
+              private languagesManager: LanguagesManager, private hypeOMeter: HypeOMeter,
+              private translateBoxUi: TranslateBoxUi) {
     this.lastResult = [];
     this.targetLanguages = [];
+    this.translateBoxUi.init();
   }
 
   getTranslations(): TranslationResultView[] {
@@ -21,11 +23,11 @@ class TranslationBox {
   }
 
   getTargetLanguageOptions(): TargetLanguageView[] {
-    return this.translateManager.getAllTargetLanguages();
+    return this.languagesManager.getActiveLanguages();
   }
 
   getLastError(): string {
-    return this.translateManager.getLastError();
+    return this.translateBoxUi.getLastError();
   }
 
   isLockSearch(): boolean {
@@ -76,7 +78,7 @@ class TranslationBox {
     this.lastResult = [];
     let sourceLanguage = 'auto';
 
-    this.translateManager.translate(
+    this.translateBoxUi.translate(
       this.input,
       sourceLanguage,
       this.targetLanguages.filter(x => { return x !== sourceLanguage; })

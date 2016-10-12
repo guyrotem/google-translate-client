@@ -13,7 +13,7 @@ describe('Service: sortLanguage', () => {
   }));
 
   it('should do something', () => {
-    expect(sortLanguage.getSortingOptions().length).toBe(2);
+    expect(sortLanguage.getSortingOptions().length).toBe(3);
   });
 
 });

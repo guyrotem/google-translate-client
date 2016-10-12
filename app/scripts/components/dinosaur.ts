@@ -4,10 +4,10 @@
 class Dinosaur {
 
   /* @ngInject */
-  constructor(private translateManager: TranslateManager) { }
+  constructor(private translateManager: TranslateManager, private languagesManager: LanguagesManager) { }
 
   isShowDino() {
-    return this.translateManager.isLoading() ||
+    return this.languagesManager.isLoading() ||
       this.translateManager.isTranslationInProgress();
   }
 }

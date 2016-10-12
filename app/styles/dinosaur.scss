@@ -221,7 +221,7 @@ $light-grey: #dddddd;
   font-size: 3px; // Control the size of the animation
   background-color: $light-grey;
   position: relative;
-  animation: dino-flip 4s infinite ease-in-out;
+  //animation: dino-flip 4s both infinite;
 
   > * {
     background: $grey;

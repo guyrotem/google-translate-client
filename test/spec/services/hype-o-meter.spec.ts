@@ -13,7 +13,7 @@ describe('Service: hypeOMeter', () => {
   }));
 
   it('should do something', () => {
-    hypeOMeter.loadRankings([{code: 'fr', name: 'French'}, {code: 'iw', name: 'Hebrew'}]);
+    hypeOMeter.loadStatistics([{code: 'fr', name: 'French'}, {code: 'iw', name: 'Hebrew'}]);
     expect(hypeOMeter.getLanguageRank('fr')).toBe(0);
   });
 

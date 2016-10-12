@@ -10,11 +10,15 @@ class SortLanguage {
     this.sortingOptions = [
       {
         label: 'ABC',
-        id: 0
+        id: SortingOption.ABC
       },
       {
         label: 'Popularity',
-        id: 1
+        id: SortingOption.Popularity
+      },
+      {
+        label: 'Used recently',
+        id: SortingOption.UsedRecently
       }
     ];
   }
@@ -24,6 +28,10 @@ class SortLanguage {
   }
 
   orderLangsBy(languages: TargetLanguageView[], how: SortingOption): TargetLanguageView[] {
+    if (angular.isUndefined(how)) {
+      how = this.langOrderingType;
+    }
+
     this.langOrderingType = how;
 
     switch (how) {
@@ -31,6 +39,8 @@ class SortLanguage {
         return _.sortBy(languages, 'name');
       case SortingOption.Popularity:
         return _.sortBy(languages, (x) => this.getLanguageRank(x));
+      case SortingOption.UsedRecently:
+        return _.sortBy(languages.filter((x) => this.wasEverUsed(x)), (x) => -1 * this.getLastUsed(x));
       default:
         console.error(`What is ${how}?`);
         return [];
@@ -48,11 +58,20 @@ class SortLanguage {
   private getLanguageRank(language: TargetLanguageView): number {
     return this.hypeOMeter.getLanguageRank(language.code);
   }
+
+  private wasEverUsed(language: TargetLanguageView): boolean {
+    return this.getLastUsed(language) > 0;
+  }
+
+  private getLastUsed(language: TargetLanguageView): number {
+    return this.hypeOMeter.getLanguageLastUsage(language.code);
+  }
 }
 
 enum SortingOption {
   ABC = 0,
-  Popularity = 1
+  Popularity = 1,
+  UsedRecently = 2
 }
 
 angular

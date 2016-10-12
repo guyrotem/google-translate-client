@@ -4,7 +4,7 @@
 module.exports = function (grunt) {
   require('wix-gruntfile')(grunt, {
     version: '1.0.243',
-    port: 9000,
+    port: 5000,
     livereload: 35729,
     preloadModule: 'googleTranslate1xPreload',
     karmaConf: require('./karma.conf.js'),

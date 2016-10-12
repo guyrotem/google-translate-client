@@ -10,12 +10,13 @@
               %span.link(ng-class="{'selected': $ctrl.isSelectedSorting(option)}") {{option.label}}
               %span(ng-show="!$last")
                 \|
-              -#{{option.label + ($last ? '' : ' |')}}
         %ui-select(ng-model="$ctrl.targetLanguages" theme="bootstrap" ng-disabled="$ctrl.isLockUi()" multiple)
           %ui-select-match(placeholder="{{$ctrl.getTargetLanguageOptions() ? 'Spanish, French, Bengali, ...' : 'Loading languages, please wait...'}}")
             {{ $item.name }}
           %ui-select-choices(repeat="targetLanguage.code as targetLanguage in $ctrl.getTargetLanguageOptions() | filter:$select.search")
             %span(ng-class="{'popular': $ctrl.isPopularTargetLanguage(targetLanguage)}") {{ targetLanguage.name }}
+          %ui-select-no-choice
+            %span.dropdown-no-results No results match your search...
       .translation-input-container
         %div.header Text
         %input.free-text(name='input' ng-model='$ctrl.input' autocomplete="off" placeholder="{{$ctrl.getTargetLanguageOptions() ? 'translate me...' : ''}}" ng-disabled="$ctrl.isLockUi()")

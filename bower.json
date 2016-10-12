@@ -28,7 +28,8 @@
     "lodash": "^4.16.3",
     "angular-ui-select": "^0.19.4",
     "angular-sanitize": "^1.5.8",
-    "bootstrap": "^3.3.7"
+    "bootstrap": "^3.3.7",
+    "angular-animate": "^1.5.8"
   },
   "devDependencies": {
     "angular-mocks": "~1.5.0",

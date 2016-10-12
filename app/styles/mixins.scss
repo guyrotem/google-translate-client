@@ -1,0 +1,42 @@
+@mixin if-animation {
+  &.ng-enter {
+    transition: .5s linear all;
+    opacity: 0;
+  }
+
+  &.ng-enter.ng-enter-active {
+    opacity: 1;
+  }
+
+  &.ng-leave {
+    transition: .5s linear all;
+    opacity: 1;
+  }
+
+  &.ng-leave.ng-leave-active {
+    opacity: 0;
+  }
+}
+
+@mixin hide-animation($time) {
+  &.ng-hide-add,
+  &.ng-hide-remove {
+    transition: $time linear all;
+  }
+
+  &.ng-hide-add {
+    opacity: 1;
+  }
+
+  &.ng-hide-add.ng-hide-add-active {
+    opacity: 0;
+  }
+
+  &.ng-hide-remove {
+    opacity: 0;
+  }
+
+  &.ng-hide-remove.ng-hide-remove-active {
+    opacity: 1;
+  }
+}

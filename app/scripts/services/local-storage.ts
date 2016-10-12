@@ -11,6 +11,11 @@ class LocalStorage {
     return LocalStorage.asIntOrZero(popularitySettings[languageCode]);
   }
 
+  getLanguageLastUsage(languageCode: string): number {
+    let langLastUse = this.getLastUsageStat();
+    return LocalStorage.asIntOrZero(langLastUse[languageCode]);
+  }
+
   incrementLanguageUsageCount(languageCode: string) {
     let popularitySettings = this.getPopularitySafe();
     let currentCount = LocalStorage.asIntOrZero(popularitySettings[languageCode]);
@@ -18,23 +23,45 @@ class LocalStorage {
     this.commitPopularitySettings(popularitySettings);
   }
 
+  setLastUsed(languageCode: string) {
+    let langLastUse = this.getLastUsageStat();
+    langLastUse[languageCode] = new Date().getTime();
+    this.commitLastUseSettings(langLastUse);
+  }
+
   resetStatistics() {
     this.$window.localStorage.clear();
   }
 
-  private getPopularitySafe() {
-    let languagePopularityJson = this.$window.localStorage.getItem('popularity');
+  private getJsonSafe(propertyName: string) {
+    let storageJson = this.$window.localStorage.getItem(propertyName);
 
     try {
-      return JSON.parse(languagePopularityJson) || {};
+      return JSON.parse(storageJson) || {};
     } catch (e) {
-      this.commitPopularitySettings({});
+      this.commitJson(propertyName, {});
       return {};
     }
   }
 
+  private getPopularitySafe() {
+    return this.getJsonSafe('popularity');
+  }
+
+  private getLastUsageStat() {
+    return this.getJsonSafe('lastUse');
+  }
+
   private commitPopularitySettings(popularitySettings: {[key: string]: number}) {
-    this.$window.localStorage.setItem('popularity', JSON.stringify(popularitySettings));
+    this.commitJson('popularity', popularitySettings);
+  }
+
+  private commitLastUseSettings(lastUse: {[key: string]: number}) {
+    this.commitJson('lastUse', lastUse);
+  }
+
+  private commitJson(name: string, value: {[key: string]: number}) {
+    this.$window.localStorage.setItem(name, JSON.stringify(value));
   }
 
   private static asIntOrZero(input: any): number {

@@ -1,3 +1,5 @@
+@import 'mixins';
+
 $bg-color: #40d0b0;
 
 $wix-helvetica-55: Arial;
@@ -190,14 +192,25 @@ footer {
   }
 }
 
-.ui-select-bootstrap > .ui-select-choices {
-  width: 40%;
+.ui-select-bootstrap {
+  > .ui-select-choices,
+  > .dropdown-menu {
+    width: 40%;
+  }
 }
 
 .ui-select-choices-row .popular {
   font-weight: bold;
 }
 
+.dropdown-no-results {
+  padding-left: 8px;
+}
+
 .octicon-mark-github {
   vertical-align: bottom;
+}
+
+.dinosaur {
+  @include hide-animation(.3s);
 }
