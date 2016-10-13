@@ -23,7 +23,7 @@ class LanguagesManager {
       })
       .catch(() => {
         this._isLoading = false;
-        return this.$q.reject('Failed to retrieve languages. Please make sure server is up & running (or set enableMocks==true)');
+        return this.$q.reject('Failed to retrieve languages. Please make sure server is up & running (it may take up to 1 minute, being a free HerokuApp)');
       });
   }
 

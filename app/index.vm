@@ -52,6 +52,8 @@
     <script src="scripts/app.js"></script>
     <script src="views/google-translate1x-app.html.js"></script>
     <script src="views/translation-box.html.js"></script>
+    <script src="views/dinosaur.html.js"></script>
+    <script src="views/github-logo.html.js"></script>
     <script src="scripts/components/google-translate1x-app.js"></script>
     <script src="scripts/services/google-translate-api.js"></script>
     <script src="scripts/components/translation-box.js"></script>
@@ -70,6 +72,7 @@
     
     <!-- build:js(.tmp) scripts/mocks.js -->
     <script src="test/mock/server-api.js"></script>
+    <script src="test/mock/server-api-mock-data.js"></script>
     <!-- endbuild -->
     
     <script>
