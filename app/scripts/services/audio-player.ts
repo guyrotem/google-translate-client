@@ -2,9 +2,10 @@
 'use strict';
 
 class AudioPlayer {
+  private dummy: string;
   /* @ngInject */
   constructor() {
-
+    this.dummy = '';
   }
 
   play(url: string): void {
