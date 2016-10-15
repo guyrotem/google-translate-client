@@ -3,14 +3,14 @@
 
 angular.module('googleTranslate1xAppMocksInternal', [])
   .service('mocksResponseBuilder', () => {
-    let buildTranslationResponse = (translation: string, originalText: string, transliteration: string = ''): TranslationResultServer => {
+    let buildTranslationResponse = (translation: string, originalText: string, transliteration: string = '', synonyms: string[] = []): TranslationResultServer => {
       return {
         extract: {
           translation: translation,
           actualQuery: originalText,
           resultType: 0,
           transliteration: transliteration,
-          synonyms: []
+          synonyms: synonyms
         },
         originalResponse: null
       };
@@ -19,9 +19,9 @@ angular.module('googleTranslate1xAppMocksInternal', [])
     let singleLang = (targetLang, query) => {
       switch (targetLang) {
         case 'fr':
-          return buildTranslationResponse('chien', query);
+          return buildTranslationResponse('chien', query, '', ['chien', 'mâle', 'fille moche']);
         case 'ar':
-          return buildTranslationResponse('كلب', query, 'kalb');
+          return buildTranslationResponse('كلب', query, 'kalb', ['كلب', 'كلاب']);
         case 'es':
           return buildTranslationResponse('perro', query);
         case 'zh-CN':

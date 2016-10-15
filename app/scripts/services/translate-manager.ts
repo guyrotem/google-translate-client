@@ -50,7 +50,8 @@ class TranslateManager {
           return {
             language: this.languagesManager.langCodeToName(langCode),
             translation: resolvedTranslations[index].translation,
-            transliteration: resolvedTranslations[index].transliteration
+            transliteration: resolvedTranslations[index].transliteration,
+            synonyms: resolvedTranslations[index].synonyms
           };
         });
       })

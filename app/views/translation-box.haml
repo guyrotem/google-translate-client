@@ -10,18 +10,23 @@
               %span.link(ng-class="{'selected': $ctrl.isSelectedSorting(option)}") {{option.label}}
               %span(ng-show="!$last")
                 \|
-        %ui-select(ng-model="$ctrl.targetLanguages" theme="bootstrap" ng-disabled="$ctrl.isLockUi()" multiple)
-          %ui-select-match(placeholder="{{$ctrl.getTargetLanguageOptions() ? 'Spanish, French, Bengali, ...' : 'Loading languages, please wait...'}}")
-            {{ $item.name }}
-          %ui-select-choices(repeat="targetLanguage.code as targetLanguage in $ctrl.getTargetLanguageOptions() | filter:$select.search")
-            %span(ng-class="{'popular': $ctrl.isPopularTargetLanguage(targetLanguage)}") {{ targetLanguage.name }}
-          %ui-select-no-choice
-            %span.dropdown-no-results No results match your search...
+        %div
+          .dropdown-container
+            %ui-select(ng-model="$ctrl.targetLanguages" theme="bootstrap" ng-disabled="$ctrl.isLockUi()" multiple)
+              %ui-select-match(placeholder="{{$ctrl.getTargetLanguageOptions() ? 'Spanish, French, Bengali, ...' : 'Loading languages, please wait...'}}")
+                {{ $item.name }}
+              %ui-select-choices(repeat="targetLanguage.code as targetLanguage in $ctrl.getTargetLanguageOptions() | filter:$select.search")
+                %span(ng-class="{'popular': $ctrl.isPopularTargetLanguage(targetLanguage)}") {{ targetLanguage.name }}
+              %ui-select-no-choice
+                %span.dropdown-no-results No results match your search...
+          .clear-all
+            %button.button-clear(type="button" ng-click="$ctrl.clearAllOptions()" ng-disabled="$ctrl.targetLanguages.length === 0" tabindex="-1")
+              Clear
       .translation-input-container
         %div.header Text
         %input.free-text(name='input' ng-model='$ctrl.input' autocomplete="off" placeholder="{{$ctrl.getTargetLanguageOptions() ? 'translate me...' : ''}}" ng-disabled="$ctrl.isLockUi()")
         .search-button-container
-          %button(type='submit' ng-disabled='$ctrl.isLockSearch()' value='Translate!')
+          %button.button-submit(type='submit' ng-disabled='$ctrl.isLockSearch()' value='Translate!')
             GO!
         .search-results-counter(ng-show='$ctrl.isInProgress()')
           {{$ctrl.translationsDoneCounter()}} / {{$ctrl.targetLanguages.length}}
@@ -32,8 +37,11 @@
         %span Did you mean...
         %span {{ $ctrl.didYouMean() }}
 
-    .output-languages
-      .translation-result(ng-repeat='translationItem in $ctrl.getTranslations()')
+    .output-languages(ng-show="$ctrl.getTranslations().length > 0")
+      .translation-result(ng-repeat="translationItem in $ctrl.getTranslations()")
+        .result-play(ng-click="$ctrl.playAudio(translationItem)" ng-include="'views/play-icon.svg.html'")
         .result-language {{translationItem.language}}
         .result-value {{translationItem.translation}}
         .result-transliteration {{translationItem.transliteration}}
+        .result-synonyms {{translationItem.synonyms | synonyms}}
+      %audio-speed-dashboard

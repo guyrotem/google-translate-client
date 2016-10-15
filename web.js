@@ -6,4 +6,4 @@ function serveDistFolder(port) {
   app.listen(port);
 }
 
-serveDistFolder(process.env.PORT || 5000);
+serveDistFolder(process.env.PORT);

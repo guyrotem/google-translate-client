@@ -50,6 +50,12 @@ class LanguagesManager {
       .find(x => x.code === langCode)
       .name;
   }
+
+  langNameToCode(langName: string): string {
+    return this.initialLanguages
+      .find(x => x.name === langName)
+      .code;
+  }
 }
 
 angular

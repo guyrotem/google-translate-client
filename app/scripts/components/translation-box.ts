@@ -12,7 +12,7 @@ class TranslationBox {
   /* @ngInject */
   constructor(private translateManager: TranslateManager, private sortLanguage: SortLanguage,
               private languagesManager: LanguagesManager, private hypeOMeter: HypeOMeter,
-              private translateBoxUi: TranslateBoxUi) {
+              private translateBoxUi: TranslateBoxUi, private tts: Tts) {
     this.lastResult = [];
     this.targetLanguages = [];
     this.translateBoxUi.init();
@@ -24,6 +24,10 @@ class TranslationBox {
 
   getTargetLanguageOptions(): TargetLanguageView[] {
     return this.languagesManager.getActiveLanguages();
+  }
+
+  clearAllOptions(): void {
+    this.targetLanguages = [];
   }
 
   getLastError(): string {
@@ -86,6 +90,10 @@ class TranslationBox {
       .then(result => {
         this.lastResult = result;
       });
+  }
+
+  playAudio(result: TranslationResultView): void {
+    this.tts.play(result.translation, this.languagesManager.langNameToCode(result.language));
   }
 }
 
