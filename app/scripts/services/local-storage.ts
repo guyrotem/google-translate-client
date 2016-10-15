@@ -3,12 +3,17 @@
 
 class LocalStorage {
 
+  private popularityLifeMedian: number;
+
   /* @ngInject */
-  constructor(private $window: ng.IWindowService) {}
+  constructor(private $window: ng.IWindowService) {
+    this.popularityLifeMedian = 1000 * 60 * 60 * 24 * 7;
+  }
 
   getLanguageUsageCount(languageCode: string): number {
     let popularitySettings = this.getPopularitySafe();
-    return LocalStorage.asIntOrZero(popularitySettings[languageCode]);
+    let langInfo = popularitySettings.langsInfo;
+    return LocalStorage.asIntOrZero(langInfo[languageCode]);
   }
 
   getLanguageLastUsage(languageCode: string): number {
@@ -16,10 +21,26 @@ class LocalStorage {
     return LocalStorage.asIntOrZero(langLastUse[languageCode]);
   }
 
+  normalizePopularity(): void {
+    let popularitySettings = this.getPopularitySafe();
+    let now = new Date().getTime();
+    let timeSinceLastUpdate = now - popularitySettings.lastUpdate;
+    let multiplier = Math.pow(0.5, timeSinceLastUpdate / this.popularityLifeMedian);
+    let langInfo = popularitySettings.langsInfo;
+
+    popularitySettings.lastUpdate = now;
+    popularitySettings.langsInfo = <{ [key: string]: number }>_.transform(langInfo, (acc, popularity, key) => {
+      acc[key] = multiplier * <number>popularity;
+      return acc;
+    });
+
+    this.commitPopularitySettings(popularitySettings);
+  }
+
   incrementLanguageUsageCount(languageCode: string) {
     let popularitySettings = this.getPopularitySafe();
-    let currentCount = LocalStorage.asIntOrZero(popularitySettings[languageCode]);
-    popularitySettings[languageCode] = currentCount + 1;
+    let currentCount = LocalStorage.asIntOrZero(popularitySettings.langsInfo[languageCode]);
+    popularitySettings.langsInfo[languageCode] = currentCount + 1;
     this.commitPopularitySettings(popularitySettings);
   }
 
@@ -44,15 +65,18 @@ class LocalStorage {
     }
   }
 
-  private getPopularitySafe() {
-    return this.getJsonSafe('popularity');
+  private getPopularitySafe(): PopularityStorage {
+    let pop = <PopularityStorage>this.getJsonSafe('popularity');
+    pop.lastUpdate = pop.lastUpdate || new Date().getTime();
+    pop.langsInfo = pop.langsInfo || {};
+    return pop;
   }
 
   private getLastUsageStat() {
     return this.getJsonSafe('lastUse');
   }
 
-  private commitPopularitySettings(popularitySettings: {[key: string]: number}) {
+  private commitPopularitySettings(popularitySettings: any) {
     this.commitJson('popularity', popularitySettings);
   }
 
@@ -65,12 +89,17 @@ class LocalStorage {
   }
 
   private static asIntOrZero(input: any): number {
-    if (input === null || parseInt(input, 10) !== input) {
+    if (angular.isUndefined(input) || isNaN(parseFloat(input))) {
       return 0;
     } else {
       return input;
     }
   }
+}
+
+interface PopularityStorage {
+  lastUpdate: number;
+  langsInfo: {[key: string]: number};
 }
 
 angular

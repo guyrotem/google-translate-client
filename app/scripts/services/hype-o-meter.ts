@@ -41,6 +41,8 @@ class HypeOMeter {
   }
 
   updateLanguageUsageStatistics(targetLangs: string[]) {
+    this.localStorage.normalizePopularity();
+
     targetLangs.map(code => {
       this.localStorage.incrementLanguageUsageCount(code);
       this.localStorage.setLastUsed(code);

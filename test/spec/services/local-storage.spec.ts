@@ -45,7 +45,7 @@ describe('Service: localStorage', () => {
   });
 
   it('should reset language when value is not a number', () => {
-    $window.localStorage.setItem('popularity', '{"fr": "not a number", "de": 1}');
+    $window.localStorage.setItem('popularity', '{"lastUpdate": 1, "langsInfo": {"fr": "not a number", "de": 1}}');
     expect(localStorage.getLanguageUsageCount('fr')).toBe(0);
     expect(localStorage.getLanguageUsageCount('de')).toBe(1);
   });

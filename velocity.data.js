@@ -5,7 +5,7 @@ module.exports = {
   enableMocks: false,
   locale: 'en',
   clientTopology: {
-    googleTranslate1xStaticsUrl: ''
+    googleTranslate1xStaticsUrl: 'https://google-translate-client.herokuapp.com/'
   },
   newRelicEndUserHeader: '',
   newRelicEndUserFooter: ''

@@ -20,7 +20,9 @@
     <meta name="viewport" content="width=device-width">
     <meta name="robots" content="noindex, nofollow">
     <meta name="referrer" content="origin">
+    <!-- process-tags prefix('${staticsUrl}') -->
     <link type="image/png" href="images/china-glow.png" rel="shortcut icon">
+    <!-- end-process-tags -->
     <!-- process-tags prefix('${staticsUrl}') -->
     <!-- build:css({.tmp,app}) styles/main.css -->
     <link rel="stylesheet" href="bower_components/angular-ui-select/dist/select.css">

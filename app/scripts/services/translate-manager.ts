@@ -39,7 +39,8 @@ class TranslateManager {
 
     return this.$q.all(promiseMap)
       .then((resolvedTranslations: TranslationResultServerExtract[]) => {
-        if (resolvedTranslations[0].actualQuery !== originalText) {
+        if (resolvedTranslations[0].actualQuery
+          && resolvedTranslations[0].actualQuery.trim() !== originalText.trim()) {
           this.didYouMean = resolvedTranslations[0].actualQuery;
         }
 
