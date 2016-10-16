@@ -10,7 +10,8 @@ class AudioPlayer {
 
   play(url: string): void {
     console.log('Playing ' + url);
-    var audio = new Audio(url);
+    var audio = new Audio();
+    audio.src = url;
     audio.play();
   }
 }

@@ -23,7 +23,7 @@ describe('Service: tts', () => {
     spyOn(audioPlayer, 'play');
     tts.getSettings().speed = 2;
     tts.play('perro', 'es');
-    expect(audioPlayer.play).toHaveBeenCalledWith('/api/tts?query=perro&targetLang=es&speed=0.2');
+    expect(audioPlayer.play).toHaveBeenCalledWith('/api/tts?query=perro&language=es&speed=0.2');
   });
 
 });

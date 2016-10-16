@@ -14,7 +14,7 @@ class Tts {
   }
 
   play(query: string, lang: string): void {
-    this.audioPlayer.play(`${this.ttsUrl}?query=${query}&targetLang=${lang}&speed=${this.settings.speed / 10.0}`);
+    this.audioPlayer.play(`${this.ttsUrl}?query=${query}&language=${lang}&speed=${this.settings.speed / 10.0}`);
   }
 
   getSettings(): TtsSettings {
