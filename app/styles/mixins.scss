@@ -1,3 +1,37 @@
+@mixin text-header {
+  color: $color-wix-dark-black;
+}
+
+@mixin text-content {
+  color: $color-google-font;
+}
+
+@mixin fake-link {
+  color: $color-results-counter;
+
+  &:hover {
+    text-decoration: underline;
+    cursor: pointer;
+  }
+}
+
+@mixin button($color-active) {
+  background-color: $color-active;
+  border-radius: 5px;
+  outline: none;
+  border: 0;
+  box-shadow: 2px 2px 7px 0 $color-gray-dark;
+
+  &:disabled {
+    background-color: $button-disabled;
+  }
+
+  &:hover:not(:disabled),
+  &:focus {
+    opacity: .8;
+  }
+}
+
 @mixin if-animation {
   &.ng-enter {
     transition: .5s linear all;

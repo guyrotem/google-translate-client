@@ -23,49 +23,16 @@ $color-google-font: #545454;
 
 $color-text-shadow: #bebebe;
 
-@mixin text-header {
-  color: $color-wix-dark-black;
-}
-
-@mixin text-content {
-  color: $color-google-font;
-}
-
-@mixin fake-link {
-  color: $color-results-counter;
-
-  &:hover {
-    text-decoration: underline;
-    cursor: pointer;
-  }
-}
-
 .app-container {
   @include text-content;
   margin: 30px auto;
-  width: 1020px;
-  font-family: HelveticaNeueW01-Thin,HelveticaNeueW02-Thin,HelveticaNeueW10-35Thin,sans-serif;
+  transition: margin .3s linear;
+  max-width: 1020px;
+  font-family: Arial, sans-serif;
 }
 
 .powered-by-google {
   margin-left: 10px;
-}
-
-@mixin button($color-active) {
-  background-color: $color-active;
-  border-radius: 5px;
-  outline: none;
-  border: 0;
-  box-shadow: 2px 2px 7px 0 $color-gray-dark;
-
-  &:disabled {
-    background-color: $button-disabled;
-  }
-
-  &:hover:not(:disabled),
-  &:focus {
-    opacity: .8;
-  }
 }
 
 .button-submit {
@@ -171,6 +138,8 @@ $color-light-gray: #dfdfdf;
   border-radius: 12px;
   padding: 60px;
 
+  transition: padding .3s linear;
+
   .did-you-mean {
     font-style: italic;
     color: $color-warning;
@@ -274,5 +243,31 @@ footer {
   .ui-select-match-item,
   .ui-select-match .close {
     line-height: 24px;
+  }
+}
+
+@media (max-width: 600px) {
+  .result-synonyms {
+    display: none;
+  }
+
+  .translation-input-container .free-text {
+    width: 180px;
+  }
+
+  .target-languages .dropdown-container {
+    width: 70%;
+  }
+
+  .sort-by {
+    display: block;
+  }
+
+  .translate-box {
+    padding: 30px;
+  }
+
+  .app-container {
+    margin: 0;
   }
 }
