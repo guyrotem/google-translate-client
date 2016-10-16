@@ -153,6 +153,19 @@ $color-light-gray: #dfdfdf;
     color: $color-wix-dark-black;
     text-shadow: 2px -3px $color-text-shadow;
     margin-top: 0;
+    transition: font-size .3s ease;
+
+    @media (max-width: 820px) {
+      font-size: 48px;
+    }
+
+    @media (max-width: 720px) {
+      font-size: 38px;
+    }
+
+    @media (max-width: 620px) {
+      font-size: 30px;
+    }
   }
 }
 
