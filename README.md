@@ -4,6 +4,8 @@ It allows you to translate phrases to multiple languages simultaneously, using t
 AngularJS 1.5.x, using [wix-gruntfile](https://github.com/wix/wix-gruntfile) as a dev framework.
 ###[**See demo here**](https://google-translate-proxy.herokuapp.com/)###
 
+[![Build Status](https://travis-ci.org/guyrotem/google-translate-client.svg?branch=master)](https://travis-ci.org/guyrotem/google-translate-client)
+
 ## Setup
 
 => you must have bower and npm properlly installed on your computer.
