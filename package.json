@@ -15,9 +15,7 @@
   "dependencies": {
     "bower": "^1.7.9",
     "express": "^4.14.0",
-    "grunt": "^1.0.1",
     "grunt-cli": "^1.2.0",
-    "gzippo": "^0.2.0",
     "request": "^2.75.0",
     "wix-gruntfile": "^0.1.231",
     "body-parser": "^1.12.3",
@@ -25,5 +23,8 @@
   },
   "optionalDependencies": {
     "wix-statics-parent": "*"
+  },
+  "devDependencies": {
+    "proxy-middleware": "^0.15.0"
   }
 }
