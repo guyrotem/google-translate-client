@@ -23,7 +23,9 @@
             %button.button-clear(type="button" ng-click="$ctrl.clearAllOptions()" ng-disabled="$ctrl.targetLanguages.length === 0" tabindex="-1")
               Clear
       .translation-input-container
-        %div.header Text
+        .text-label
+          %span.header Text
+          %span.small-text [source language: auto]
         %input.free-text(name='input' ng-model='$ctrl.input' autocomplete="off" placeholder="{{$ctrl.getTargetLanguageOptions() ? 'translate me...' : ''}}" ng-disabled="$ctrl.isLockUi()")
         .search-button-container
           %button.button-submit(type='submit' ng-disabled='$ctrl.isLockSearch()' value='Translate!')

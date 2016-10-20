@@ -5,5 +5,5 @@ function serveDistFolder(port) {
   app.use('/statics', express.static(__dirname + '/dist'));
   app.listen(port);
 }
-
+console.info('Starting client at port ' + process.env.PORT);
 serveDistFolder(process.env.PORT);
