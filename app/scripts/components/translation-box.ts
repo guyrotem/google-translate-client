@@ -81,7 +81,7 @@ class TranslationBox {
 
   submit() {
     this.lastResult = [];
-    let sourceLanguage = this.sourceLanguageManager.getSelectedLanguageModel().code;// || 'auto';
+    let sourceLanguage = this.sourceLanguageManager.getSelectedLanguageModel().code;
 
     this.translateBoxUi.translate(
       this.input,
