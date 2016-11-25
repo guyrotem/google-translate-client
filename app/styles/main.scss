@@ -57,6 +57,10 @@ $color-text-shadow: #bebebe;
     @include text-header;
   }
 
+  .text-label {
+    margin: 10px 0;
+  }
+
   .small-text {
     font-size: 14px;
     color: $color-gray-dark;

@@ -57,6 +57,7 @@
     <script src="views/dinosaur.html.js"></script>
     <script src="views/github-logo.html.js"></script>
     <script src="views/play-icon.svg.html.js"></script>
+    <script src="views/source-lang-selection.html.js"></script>
     <script src="scripts/components/google-translate1x-app.js"></script>
     <script src="scripts/services/google-translate-api.js"></script>
     <script src="scripts/components/translation-box.js"></script>
@@ -71,6 +72,8 @@
     <script src="scripts/services/tts.js"></script>
     <script src="scripts/services/audio-player.js"></script>
     <script src="scripts/components/audio-speed-dashboard.js"></script>
+    <script src="scripts/components/source-lang-selection.js"></script>
+    <script src="scripts/services/source-language-manager.js"></script>
     <!-- endbuild --><!-- scripts -->
     <!-- end-process-tags -->
 

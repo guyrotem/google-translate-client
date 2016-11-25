@@ -9,7 +9,8 @@ class LanguagesManager {
 
   /* @ngInject */
   constructor(private sortLanguage: SortLanguage, private hypeOMeter: HypeOMeter,
-              private googleTranslateApi: GoogleTranslateApi, private $q: ng.IQService) {
+              private googleTranslateApi: GoogleTranslateApi, private $q: ng.IQService,
+              private sourceLanguageManager: SourceLanguageManager) {
 
   }
 
@@ -20,6 +21,7 @@ class LanguagesManager {
       .then(results => {
         this._isLoading = false;
         this.setLanguages(results);
+        this.sourceLanguageManager.setLanguages(results);
       })
       .catch(() => {
         this._isLoading = false;

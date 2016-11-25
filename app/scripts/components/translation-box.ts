@@ -12,7 +12,8 @@ class TranslationBox {
   /* @ngInject */
   constructor(private translateManager: TranslateManager, private sortLanguage: SortLanguage,
               private languagesManager: LanguagesManager, private hypeOMeter: HypeOMeter,
-              private translateBoxUi: TranslateBoxUi, private tts: Tts) {
+              private translateBoxUi: TranslateBoxUi, private tts: Tts,
+              private sourceLanguageManager: SourceLanguageManager) {
     this.lastResult = [];
     this.targetLanguages = [];
     this.translateBoxUi.init();
@@ -80,7 +81,7 @@ class TranslationBox {
 
   submit() {
     this.lastResult = [];
-    let sourceLanguage = 'auto';
+    let sourceLanguage = this.sourceLanguageManager.getSelectedLanguageModel().code;// || 'auto';
 
     this.translateBoxUi.translate(
       this.input,

@@ -25,8 +25,8 @@
       .translation-input-container
         .text-label
           %span.header Text
-          %span.small-text [source language: auto]
-        %input.free-text(name='input' ng-model='$ctrl.input' autocomplete="off" placeholder="{{$ctrl.getTargetLanguageOptions() ? 'translate me...' : ''}}" ng-disabled="$ctrl.isLockUi()")
+          %source-lang-selection
+        %input.free-text(name="input" ng-model="$ctrl.input" autocomplete="off" placeholder="{{$ctrl.getTargetLanguageOptions() ? 'translate me...' : ''}}" ng-disabled="$ctrl.isLockUi()")
         .search-button-container
           %button.button-submit(type='submit' ng-disabled='$ctrl.isLockSearch()' value='Translate!')
             GO!

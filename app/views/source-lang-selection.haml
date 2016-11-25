@@ -1,0 +1,5 @@
+.source-lang-selection(style="display: inline-block")
+  %span [source language:
+  %span
+    %select(data-ng-model="$ctrl.model.code" ng-options="option.code as option.name for option in $ctrl.getTargetLanguages()")
+  %span ]
