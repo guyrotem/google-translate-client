@@ -19,12 +19,12 @@
     "express-session": "^1.11.3",
     "grunt-cli": "^0.1.13",
     "request": "^2.75.0",
-    "wix-gruntfile": "0.1.366"
+    "wix-gruntfile": "0.1.813"
   },
   "devDependencies": {
     "proxy-middleware": "^0.15.0"
   },
   "optionalDependencies": {
-    "wix-statics-parent": "*"
+    "wix-statics-parent": "^0.0.1"
   }
 }
