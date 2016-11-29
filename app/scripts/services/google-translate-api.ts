@@ -19,7 +19,7 @@ module googleTranslateClientApp {
         targetLang: targetLanguage
       };
 
-      return this.$http.post('/api/translate', data)
+      return this.$http.post('https://google-translate-proxy.herokuapp.com/api/translate', data)
         .then(response => <TranslationResultServer>response.data)
         .then(data => {
           this.resolvedCounter++;
@@ -29,7 +29,7 @@ module googleTranslateClientApp {
     }
 
     getLanguages(): ng.IPromise<TargetLanguageServer[]> {
-      return this.$http.get('/api/languages')
+      return this.$http.get('https://google-translate-proxy.herokuapp.com/api/languages')
         .then(resposne => resposne.data);
     }
   }
