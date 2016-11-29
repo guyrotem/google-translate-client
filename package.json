@@ -2,6 +2,20 @@
   "name": "googletranslateclient",
   "private": true,
   "devDependencies": {
+    "proxy-middleware": "^0.15.0"
+  },
+  "engines": {
+    "node": ">=4.0.0"
+  },
+  "scripts": {
+    "test": "echo 'SKIPPING E2E TESTS'",
+    "postinstall": "bower install; grunt build;",
+    "start": "grunt serve"
+  },
+  "dependencies": {
+    "bower": "^1.8.0",
+    "express": "^4.14.0",
+    "grunt-cli": "^1.2.0",
     "autoprefixer-core": "^5.2.1",
     "grunt": "^0.4.5",
     "grunt-angular-templates": "^0.5.7",
@@ -35,21 +49,6 @@
     "karma-jasmine": "^1.0.2",
     "karma-phantomjs-launcher": "^1.0.2",
     "phantomjs-prebuilt": "^2.1.13",
-    "proxy-middleware": "^0.15.0",
     "time-grunt": "^1.0.0"
-  },
-  "engines": {
-    "node": ">=4.0.0"
-  },
-  "scripts": {
-    "test": "echo 'SKIPPING E2E TESTS'",
-    "postinstall": "bower install; grunt build;",
-    "start": "grunt serve"
-  },
-  "dependencies": {
-    "bower": "^1.8.0",
-    "express": "^4.14.0",
-    "grunt": "^0.4.5",
-    "grunt-cli": "^1.2.0"
   }
 }
