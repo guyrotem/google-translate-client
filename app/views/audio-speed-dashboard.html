@@ -1,0 +1,9 @@
+<div ng-controller="AudioSpeedDashboardCtrl as $ctrl">
+    <div style="padding: 12px 12px 0 12px">
+        <div style="display: inline-block">Play speed</div>
+        <div style="display: inline-block">
+            <input type="range" ng-model="$ctrl.getTtsSettings().speed" min="2" max="10" style="cursor: pointer">
+        </div>
+        <div style="display: inline-block">{{$ctrl.getTtsSettings().speed / 10.0}}</div>
+    </div>
+</div>

@@ -1,0 +1,8 @@
+<!-- build:js(.tmp) scripts/mocks.js -->
+<script src="mock/server-api.js"></script>
+<script src="mock/server-api-mock-data.js"></script>
+<!-- endbuild -->
+
+<script>
+  angular.module('googleTranslateClientApp').requires.push('googleTranslateClientAppMocks');
+</script>

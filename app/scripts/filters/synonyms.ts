@@ -1,20 +1,18 @@
-/// <reference path="../../../reference.ts" />
+/// <reference path="../app.ts" />
+
 'use strict';
 
-class Synonyms {
-  /* @ngInject */
-  constructor() {
-    //
+module googleTranslateClientApp {
+  export function synonymsFilterFactory(): Function {
+    return synonymsFilter;
   }
 
-  filter(input: string[]): string {
-    return input.slice(1).join(', ');
+  function synonymsFilter(input: string[], originalText): string {
+    return input
+      .filter((x) => x !== originalText)
+      .join(', ');
   }
 }
 
-angular
-  .module('googleTranslate1xAppInternal')
-  .filter('synonyms', $injector => {
-    let synonyms = $injector.instantiate(Synonyms);
-    return synonyms.filter.bind(synonyms);
-  });
+angular.module('googleTranslateClientApp')
+  .filter('synonyms', googleTranslateClientApp.synonymsFilterFactory);

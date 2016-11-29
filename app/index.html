@@ -1,0 +1,91 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+      <title>Google Translate and TTS Client</title>
+      <meta name="description" content="Translate and TTS multiple languages simultaneously">
+      <meta name="keywords" content="translate,TTS,multipe">
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width">
+    <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+    <!-- build:css(.) styles/vendor.css -->
+    <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css" />
+    <!-- bower:css -->
+    <link rel="stylesheet" href="bower_components/angular-ui-select/dist/select.css" />
+    <!-- endbower -->
+    <!-- endbuild -->
+    <!-- build:css(.tmp) styles/main.css -->
+      <link rel="stylesheet" href="styles/main.css">
+      <link rel="stylesheet" href="styles/dinosaur.css">
+    <!-- endbuild -->
+
+    <!-- process-tags prefix('https://google-translate-client.herokuapp.com/statics/') -->
+    <link type="image/png" href="images/china-glow.png" rel="shortcut icon">
+    <!-- end-process-tags -->
+  </head>
+  <body ng-app="googleTranslateClientApp">
+    <!-- Add your site or application content here -->
+    <!--<div class="header">-->
+      <!--<div class="navbar navbar-default" role="navigation">-->
+        <!--<div class="container">-->
+          <!--<div class="navbar-header">-->
+
+            <!--<a class="navbar-brand" href="#/">googleTranslateClient</a>-->
+          <!--</div>-->
+
+        <!--</div>-->
+      <!--</div>-->
+    <!--</div>-->
+
+    <div class="app-container">
+        <div ng-include="'views/main.html'"></div>
+        <footer ng-include="'views/footer.html'"></footer>
+    </div>
+
+
+
+    <!-- Google Analytics: change UA-XXXXX-X to be your site's ID -->
+     <script>
+       !function(A,n,g,u,l,a,r){A.GoogleAnalyticsObject=l,A[l]=A[l]||function(){
+       (A[l].q=A[l].q||[]).push(arguments)},A[l].l=+new Date,a=n.createElement(g),
+       r=n.getElementsByTagName(g)[0],a.src=u,r.parentNode.insertBefore(a,r)
+       }(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+       //ga('create', 'UA-XXXXX-X');
+       //ga('send', 'pageview');
+    </script>
+
+    <!-- build:js(.) scripts/vendor.js -->
+    <!-- bower:js -->
+    <script src="bower_components/jquery/dist/jquery.js"></script>
+    <script src="bower_components/angular/angular.js"></script>
+    <script src="bower_components/angular-animate/angular-animate.js"></script>
+    <script src="bower_components/angular-sanitize/angular-sanitize.js"></script>
+    <script src="bower_components/angular-touch/angular-touch.js"></script>
+    <script src="bower_components/lodash/lodash.js"></script>
+    <script src="bower_components/bootstrap/dist/js/bootstrap.js"></script>
+    <script src="bower_components/angular-ui-select/dist/select.js"></script>
+    <script src="bower_components/es6-shim/es6-shim.js"></script>
+    <!-- endbower -->
+    <!-- endbuild -->
+
+        <!-- build:js({.tmp,app}) scripts/scripts.js -->
+        <script src="scripts/app.js"></script>
+        <script src="scripts/filters/synonyms.js"></script>
+        <script src="scripts/services/audio-player.js"></script>
+        <script src="scripts/services/google-translate-api.js"></script>
+        <script src="scripts/services/hype-o-meter.js"></script>
+        <script src="scripts/services/languages-manager.js"></script>
+        <script src="scripts/services/local-storage.js"></script>
+        <script src="scripts/services/sort-language.js"></script>
+        <script src="scripts/services/source-language-manager.js"></script>
+        <script src="scripts/services/translate-box-ui.js"></script>
+        <script src="scripts/services/translate-manager.js"></script>
+        <script src="scripts/services/tts.js"></script>
+        <script src="scripts/controllers/audio-speed-dashboard.js"></script>
+        <script src="scripts/controllers/dinosaur.js"></script>
+        <script src="scripts/controllers/source-lang-selection.js"></script>
+        <script src="scripts/controllers/translation-box.js"></script>
+        <!-- endbuild -->
+</body>
+</html>

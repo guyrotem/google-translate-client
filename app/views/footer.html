@@ -1,0 +1,24 @@
+<ul class='horizontal-ul'>
+    <li>SampleApp@GitHub</li>
+    <li>
+        <div ng-include="'views/github-logo.html'"></div>
+    </li>
+    <li>
+        <a href='https://github.com/guyrotem/google-translate-client' target='_blank'>Client</a>
+    </li>
+    <li>
+        |
+    </li>
+    <li>
+        <a href='https://github.com/guyrotem/google-translate-server' target='_blank'>Server</a>
+    </li>
+    <li>
+        |
+    </li>
+    <li class='link' ng-click='showMail=!showMail' ng-init='showMail = false'>
+        <a href='#'>contact me</a>
+    </li>
+    <li ng-if='showMail'>
+        | guyrotem1@gmail.com
+    </li>
+</ul>

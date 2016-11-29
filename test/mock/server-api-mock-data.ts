@@ -1,9 +1,9 @@
-/// <reference path="../../reference.ts" />
+/// <reference path="../../typings/tsd.d.ts" />
 'use strict';
 
-angular.module('googleTranslate1xAppMocksInternal', [])
+angular.module('googleTranslateClientAppMocksInternal', [])
   .service('mocksResponseBuilder', () => {
-    let buildTranslationResponse = (translation: string, originalText: string, transliteration: string = '', synonyms: string[] = []): TranslationResultServer => {
+    let buildTranslationResponse = (translation: string, originalText: string, transliteration: string = '', synonyms: string[] = []): any => {
       return {
         extract: {
           translation: translation,
@@ -37,7 +37,7 @@ angular.module('googleTranslate1xAppMocksInternal', [])
       }
     };
 
-    return (data: TranslationSubmitServer) => {
+    return (data: any) => {
       let isSingleLang = !!data.targetLang;
 
       if (isSingleLang) {

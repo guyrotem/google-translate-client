@@ -1,21 +1,23 @@
-/// <reference path="../../../reference.ts" />
+/// <reference path="../app.ts" />
+
 'use strict';
 
-class AudioPlayer {
-  private dummy: string;
-  /* @ngInject */
-  constructor() {
-    this.dummy = '';
-  }
+module googleTranslateClientApp {
+  export class AudioPlayer {
+    private dummy: string;
+    /* @ngInject */
+    constructor() {
+      this.dummy = '';
+    }
 
-  play(url: string): void {
-    console.log('Playing ' + url);
-    var audio = new Audio();
-    audio.src = url;
-    audio.play();
+    play(url: string): void {
+      console.log('Playing ' + url);
+      let audio = new Audio();
+      audio.src = url;
+      audio.play();
+    }
   }
 }
 
-angular
-  .module('googleTranslate1xAppInternal')
-  .service('audioPlayer', AudioPlayer);
+angular.module('googleTranslateClientApp')
+  .service('audioPlayer', googleTranslateClientApp.AudioPlayer);

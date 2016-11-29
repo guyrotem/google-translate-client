@@ -2,26 +2,32 @@
   "version": "v4",
   "repo": "borisyankov/DefinitelyTyped",
   "ref": "master",
-  "path": "app/scripts/typings",
-  "bundle": "app/scripts/typings/tsd.d.ts",
+  "path": "typings",
+  "bundle": "typings/tsd.d.ts",
   "installed": {
     "jquery/jquery.d.ts": {
-      "commit": "a2c0d1ebc6ebc284367eedfe0dff3467b1dfc95e"
-    },
-    "jasmine/jasmine.d.ts": {
-      "commit": "419793fb796b0e5c1ed11e018ad28475de0c3735"
-    },
-    "es6-shim/es6-shim.d.ts": {
-      "commit": "b2d17b5dad042e293e77d09f2a30d281325cb606"
-    },
-    "angularjs/angular-mocks.d.ts": {
-      "commit": "b2d17b5dad042e293e77d09f2a30d281325cb606"
-    },
-    "lodash/lodash.d.ts": {
-      "commit": "a2c0d1ebc6ebc284367eedfe0dff3467b1dfc95e"
+      "commit": "f3244190e20af6901e865f4cc58127d19216baa1"
     },
     "angularjs/angular.d.ts": {
-      "commit": "a2c0d1ebc6ebc284367eedfe0dff3467b1dfc95e"
+      "commit": "f3244190e20af6901e865f4cc58127d19216baa1"
+    },
+    "angularjs/angular-route.d.ts": {
+      "commit": "f23cd55e319a0f67362ca0dbc4cf3e2ec1339f4e"
+    },
+    "angularjs/angular-mocks.d.ts": {
+      "commit": "f23cd55e319a0f67362ca0dbc4cf3e2ec1339f4e"
+    },
+    "angularjs/angular-sanitize.d.ts": {
+      "commit": "f23cd55e319a0f67362ca0dbc4cf3e2ec1339f4e"
+    },
+    "jasmine/jasmine.d.ts": {
+      "commit": "f23cd55e319a0f67362ca0dbc4cf3e2ec1339f4e"
+    },
+    "lodash/lodash.d.ts": {
+      "commit": "c3daad4d0547d301ce5dad25138216fa0a30d547"
+    },
+    "es6-shim/es6-shim.d.ts": {
+      "commit": "c3daad4d0547d301ce5dad25138216fa0a30d547"
     }
   }
 }

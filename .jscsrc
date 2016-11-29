@@ -1,11 +1,6 @@
 {
-  "preset": "crockford",
-  "validateIndentation": 2,
-  "disallowMultipleVarDecl": null,
-  "requireMultipleVarDecl": null,
-  "requireCamelCaseOrUpperCaseIdentifiers": "ignoreProperties",
-  "disallowDanglingUnderscores": null,
-  "requireSpaceBeforeObjectValues": true,
-  "requireSpacesInAnonymousFunctionExpression": null,
-  "requireVarDeclFirst": null
+  "requireCamelCaseOrUpperCaseIdentifiers": true,
+  "requireCapitalizedConstructors": true,
+  "requireParenthesesAroundIIFE": true,
+  "validateQuoteMarks": "'"
 }

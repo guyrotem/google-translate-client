@@ -1,0 +1,70 @@
+<div ng-controller="TranslationBoxCtrl as $ctrl">
+  <form name='$ctrl.translationForm' ng-submit='$ctrl.submit()'>
+    <div class='translation-settings'>
+      <div class='target-languages'>
+        <div class='text-label'>
+          <span class='header'>Target Languages:</span>
+          <span class='sort-by' ng-if='$ctrl.isSortingAllowed()'>
+            <span>sort options by:</span>
+            <span ng-click='$ctrl.orderLangsBy(option.id)' ng-repeat='option in $ctrl.getSortingOptions()'>
+              <span class='link' ng-class="{'selected': $ctrl.isSelectedSorting(option)}">{{option.label}}</span>
+              <span ng-show='!$last'>
+                |
+              </span>
+            </span>
+          </span>
+        </div>
+        <div>
+          <div class='dropdown-container'>
+            <ui-select multiple ng-disabled='$ctrl.isLockUi()' ng-model='$ctrl.targetLanguages' theme='bootstrap'>
+              <ui-select-match placeholder="{{$ctrl.getTargetLanguageOptions() ? 'Spanish, French, Bengali, ...' : 'Loading languages, please wait...'}}">
+                {{ $item.name }}
+              </ui-select-match>
+              <ui-select-choices repeat='targetLanguage.code as targetLanguage in $ctrl.getTargetLanguageOptions() | filter:$select.search'>
+                <span ng-class="{'popular': $ctrl.isPopularTargetLanguage(targetLanguage)}">{{ targetLanguage.name }}</span>
+              </ui-select-choices>
+              <ui-select-no-choice>
+                <span class='dropdown-no-results'>No results match your search...</span>
+              </ui-select-no-choice>
+            </ui-select>
+          </div>
+          <div class='clear-all'>
+            <button class='button-clear' ng-click='$ctrl.clearAllOptions()' ng-disabled='$ctrl.targetLanguages.length === 0' tabindex='-1' type='button'>
+              Clear
+            </button>
+          </div>
+        </div>
+      </div>
+      <div class='translation-input-container'>
+        <div class='text-label'>
+          <span class='header'>Text</span>
+          <div ng-include="'views/source-lang-selection.html'" style='display: inline-block'></div>
+        </div>
+        <input autocomplete='off' class='free-text' name='input' ng-disabled='$ctrl.isLockUi()' ng-model='$ctrl.input' placeholder="{{$ctrl.getTargetLanguageOptions() ? 'translate me...' : ''}}">
+        <div class='search-button-container'>
+          <button class='button-submit' ng-disabled='$ctrl.isLockSearch()' type='submit' value='Translate!'>
+            GO!
+          </button>
+        </div>
+        <div class='search-results-counter' ng-show='$ctrl.isInProgress()'>
+          {{$ctrl.translationsDoneCounter()}} / {{$ctrl.targetLanguages.length}}
+        </div>
+      </div>
+      <div class='translation-error' ng-show='!!$ctrl.getLastError()'>{{ $ctrl.getLastError() }}</div>
+      <div class='did-you-mean' ng-if='$ctrl.showDidYouMean()'>
+        <span>Did you mean...</span>
+        <span>{{ $ctrl.didYouMean() }}</span>
+      </div>
+    </div>
+    <div class='output-languages' ng-show='$ctrl.getTranslations().length &gt; 0'>
+      <div class='translation-result' ng-repeat='translationItem in $ctrl.getTranslations()'>
+        <div class='result-play' ng-click='$ctrl.playAudio(translationItem)' ng-include="'views/play-icon.svg.html'"></div>
+        <div class='result-language'>{{translationItem.language}}</div>
+        <div class='result-value'>{{translationItem.translation}}</div>
+        <div class='result-transliteration'>{{translationItem.transliteration}}</div>
+        <div class='result-synonyms'>{{translationItem.synonyms | synonyms:translationItem.translation}}</div>
+      </div>
+      <div ng-include="'views/audio-speed-dashboard.html'"></div>
+    </div>
+  </form>
+</div>

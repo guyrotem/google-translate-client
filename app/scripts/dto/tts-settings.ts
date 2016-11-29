@@ -1,0 +1,3 @@
+interface TtsSettings {
+  speed: number;
+}

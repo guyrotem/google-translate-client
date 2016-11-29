@@ -1,0 +1,7 @@
+<div class='source-lang-selection' style='display: inline-block' ng-controller="SourceLangSelectionCtrl as $ctrl">
+  <span>[source language:</span>
+  <span>
+    <select class="source-lang-select" data-ng-model='$ctrl.model.code' ng-options='option.code as option.name for option in $ctrl.getTargetLanguages()'></select>
+  </span>
+  <span>]</span>
+</div>

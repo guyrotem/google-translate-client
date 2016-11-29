@@ -1,7 +1,7 @@
-/// <reference path="../../reference.ts" />
+/// <reference path="../../typings/tsd.d.ts" />
 'use strict';
 
-angular.module('googleTranslate1xAppMocks', ['ngMockE2E', 'googleTranslate1xAppMocksInternal'])
+angular.module('googleTranslateClientAppMocks', ['ngMockE2E', 'googleTranslateClientAppMocksInternal'])
   .run(($httpBackend: ng.IHttpBackendService, mocksResponseBuilder, mockLanguagesResponse) => {
 
     let translateApiUrl = '/api/translate';

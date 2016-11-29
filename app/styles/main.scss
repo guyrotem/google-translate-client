@@ -294,3 +294,8 @@ footer {
     margin: 0;
   }
 }
+
+.source-lang-select:focus {
+  outline-color: $color-white;
+  //border-color: transparent;
+}
