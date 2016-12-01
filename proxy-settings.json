@@ -4,6 +4,6 @@
     "proxyPath": "/api"
   },
   "build": {
-    "staticsUrl": "https://google-translate-client.herokuapp.com/"
+    "staticsUrl": "https://google-translate-client.herokuapp.com/statics/"
   }
 }
