@@ -9,7 +9,7 @@ module googleTranslateClientApp {
 
     /* @ngInject */
     constructor(private audioPlayer: AudioPlayer) {
-      this.ttsUrl = 'https://google-translate-proxy.herokuapp.com/api/tts';
+      this.ttsUrl = '/api/tts';
       this.settings = {
         speed: 10
       };

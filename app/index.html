@@ -7,7 +7,6 @@
       <meta name="keywords" content="translate,TTS,multipe">
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width">
-      <base href="https://google-translate-client.herokuapp.com/statics/" />
     <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
     <!-- build:css(.) styles/vendor.css -->
     <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css" />
@@ -86,5 +85,16 @@
         <script src="scripts/controllers/source-lang-selection.js"></script>
         <script src="scripts/controllers/translation-box.js"></script>
         <!-- endbuild -->
+
+    <!-- COMMENT START -->
+    <script src="bower_components/angular-mocks/angular-mocks.js"></script>
+    <script src="mock/server-api.js"></script>
+    <script src="mock/server-api-mock-data.js"></script>
+
+    <script>
+      angular.module('googleTranslateClientApp')
+        .requires.push('googleTranslateClientAppMocks');
+    </script>
+    <!-- COMMENT END -->
 </body>
 </html>

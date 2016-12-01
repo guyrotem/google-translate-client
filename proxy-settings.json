@@ -2,5 +2,8 @@
   "translationServer": {
     "serverUrl": "http://localhost:9333/api",
     "proxyPath": "/api"
+  },
+  "build": {
+    "staticsUrl": "https://google-translate-client.herokuapp.com/"
   }
 }
