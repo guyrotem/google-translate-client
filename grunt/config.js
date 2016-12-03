@@ -260,14 +260,8 @@ module.exports = function (grunt) {
         }
       }
     },
-    tsd: {
-      refresh: {
-        options: {
-          // execute a command
-          command: 'reinstall',
-          config: 'tsd.json'
-        }
-      }
+    typings: {
+      install: {}
     },
 
 

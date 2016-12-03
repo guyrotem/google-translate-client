@@ -16,7 +16,7 @@ module.exports = function (grunt) {
     grunt.task.run([
       'clean:server',
       'wiredep',
-      'tsd:refresh',
+      'typings:install',
       'concurrent:server',
       'postcss:server',
       'connect:livereload',
@@ -32,7 +32,7 @@ module.exports = function (grunt) {
   grunt.registerTask('test', [
     'clean:server',
     'wiredep',
-    'tsd:refresh',
+    'typings:install',
     'concurrent:test',
     'postcss',
     'connect:test',
@@ -42,7 +42,7 @@ module.exports = function (grunt) {
   grunt.registerTask('build', [
     'clean:dist',
     'wiredep',
-    'tsd:refresh',
+    'typings:install',
     'useminPrepare',
     'concurrent:dist',
     'postcss',

@@ -1,0 +1,13 @@
+{
+  "name": "googletranslateclient",
+  "globalDependencies": {
+    "jquery": "github:DefinitelyTyped/DefinitelyTyped/jquery/jquery.d.ts#f3244190e20af6901e865f4cc58127d19216baa1",
+    "angular": "github:DefinitelyTyped/DefinitelyTyped/angularjs/angular.d.ts#f3244190e20af6901e865f4cc58127d19216baa1",
+    "angular-route": "github:DefinitelyTyped/DefinitelyTyped/angularjs/angular-route.d.ts#f23cd55e319a0f67362ca0dbc4cf3e2ec1339f4e",
+    "angular-mocks": "github:DefinitelyTyped/DefinitelyTyped/angularjs/angular-mocks.d.ts#f23cd55e319a0f67362ca0dbc4cf3e2ec1339f4e",
+    "angular-sanitize": "github:DefinitelyTyped/DefinitelyTyped/angularjs/angular-sanitize.d.ts#f23cd55e319a0f67362ca0dbc4cf3e2ec1339f4e",
+    "jasmine": "github:DefinitelyTyped/DefinitelyTyped/jasmine/jasmine.d.ts#f23cd55e319a0f67362ca0dbc4cf3e2ec1339f4e",
+    "lodash": "github:DefinitelyTyped/DefinitelyTyped/lodash/lodash.d.ts#c3daad4d0547d301ce5dad25138216fa0a30d547",
+    "es6-shim": "github:DefinitelyTyped/DefinitelyTyped/es6-shim/es6-shim.d.ts#c3daad4d0547d301ce5dad25138216fa0a30d547"
+  }
+}
