@@ -4,4 +4,4 @@ gem 'compass'
 gem 'haml'
 gem 'scss_lint'
 
-ruby '2.1.5'
+ruby '2.5.5'
