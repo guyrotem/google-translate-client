@@ -2,7 +2,6 @@
 /.idea
 /.gitattributes
 /.editorconfig
-/Gemfile.lock
 /npm-debug.log
 /dist
 /.tmp
